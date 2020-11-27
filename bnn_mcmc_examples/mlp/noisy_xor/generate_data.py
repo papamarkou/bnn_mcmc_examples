@@ -3,6 +3,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+from bnn_mcmc_examples.datasets import data_paths
+
 # %% Simulate noisy XOR points
 
 n = 250
@@ -16,6 +18,8 @@ x = np.vstack([
 ])
 
 # %% Save simulated noisy XOR points
+
+np.savetxt(data_paths['noisy_xor'].joinpath('x.csv'), x, delimiter=',', header='x1,x2', comments='')
 
 # %% Plot noisy XOR points
 

@@ -4,6 +4,8 @@ import torch
 
 from pathlib import Path
 
+from bnn_mcmc_examples.datasets import data_paths
+
 # %% Define constants
 
 output_path = Path.home().joinpath('output', 'bnn_mcmc_examples', 'mlp', 'noisy_xor')

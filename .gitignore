@@ -1,5 +1,6 @@
 bnn_mcmc_examples.egg-info
 bnn_mcmc_examples/__pycache__
+bnn_mcmc_examples/datasets/__pycache__
 bnn_mcmc_examples/mlp/noisy_xor/__pycache__
 bnn_mcmc_examples/mlp/noisy_xor/metropolis_hastings/__pycache__
 bnn_mcmc_examples/stats/__pycache__
