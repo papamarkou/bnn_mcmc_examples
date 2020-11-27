@@ -1,0 +1,5 @@
+numpy
+pandas
+torch>=1.6.0
+eeyore>=0.0.9
+kanga>=0.0.8
