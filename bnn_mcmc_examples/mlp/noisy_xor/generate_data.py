@@ -17,9 +17,13 @@ x = np.vstack([
     np.column_stack([np.random.rand(n) + s, np.random.rand(n) + s])  # points corresponding to (1, 1)
 ])
 
+y = np.repeat([0, 1, 1, 0], n)
+
 # %% Save simulated noisy XOR points
 
 np.savetxt(data_paths['noisy_xor'].joinpath('x.csv'), x, delimiter=',', header='x1,x2', comments='')
+
+np.savetxt(data_paths['noisy_xor'].joinpath('y.csv'), y, fmt='%d', header='y', comments='')
 
 # %% Plot noisy XOR points
 
