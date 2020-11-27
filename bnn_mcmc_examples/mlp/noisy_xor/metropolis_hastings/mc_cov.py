@@ -7,7 +7,7 @@ from kanga.chains import ChainArrays
 from bnn_mcmc_examples.mlp.noisy_xor.constants import num_chains
 from bnn_mcmc_examples.mlp.noisy_xor.metropolis_hastings.constants import sampler_output_path, sampler_output_run_paths
 
-# %% Load chain arrays from file
+# %% Load chain arrays
 
 chain_arrays = ChainArrays.from_file(sampler_output_run_paths, keys=['sample'])
 
@@ -15,7 +15,7 @@ chain_arrays = ChainArrays.from_file(sampler_output_run_paths, keys=['sample'])
 
 mc_cov_mats = chain_arrays.mc_cov()
 
-# %% Save Monte Carlo covariance matrices to files
+# %% Save Monte Carlo covariance matrices
 
 for i in range(num_chains):
     np.savetxt(sampler_output_run_paths[i].joinpath('mc_cov.csv'), mc_cov_mats[i], delimiter=',')
@@ -28,7 +28,7 @@ np.savetxt(sampler_output_path.joinpath('mean_mc_cov.csv'), mc_cov_mats.mean(0),
 
 mc_cor_mats = chain_arrays.mc_cor(mc_cov_mat=mc_cov_mats)
 
-# %% Save Monte Carlo correlation matrices to files
+# %% Save Monte Carlo correlation matrices
 
 for i in range(num_chains):
     np.savetxt(sampler_output_run_paths[i].joinpath('mc_cor.csv'), mc_cor_mats[i], delimiter=',')

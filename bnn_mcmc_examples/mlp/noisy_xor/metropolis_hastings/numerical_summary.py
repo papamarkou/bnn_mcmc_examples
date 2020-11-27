@@ -7,7 +7,7 @@ from kanga.chains import ChainArrays
 from bnn_mcmc_examples.mlp.noisy_xor.constants import num_chains
 from bnn_mcmc_examples.mlp.noisy_xor.metropolis_hastings.constants import sampler_output_path, sampler_output_run_paths
 
-# %% Load chain arrays, covariance matrices and runtimes from file
+# %% Load chain arrays, covariance matrices and runtimes
 
 chain_arrays = ChainArrays.from_file(sampler_output_run_paths, keys=['sample'])
 
@@ -26,7 +26,7 @@ runtimes = np.array(runtimes)
 
 rhat_val, _, _, _, _ = chain_arrays.multi_rhat(mc_cov_mat=mc_cov_mats)
 
-# %% Save rhat_val to file
+# %% Save rhat_val
 
 with open(sampler_output_path.joinpath('multi_rhat.txt'), 'w') as file:
     file.write('{}\n'.format(rhat_val))
@@ -35,7 +35,7 @@ with open(sampler_output_path.joinpath('multi_rhat.txt'), 'w') as file:
 
 ess_vals = np.array(chain_arrays.multi_ess(mc_cov_mat=mc_cov_mats))
 
-# %% Save multivariate ESSs to files
+# %% Save multivariate ESSs
 
 for i in range(num_chains):
     with open(sampler_output_run_paths[i].joinpath('multi_ess.txt'), 'w') as file:

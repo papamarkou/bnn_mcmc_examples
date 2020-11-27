@@ -17,7 +17,7 @@ sampler_output_paths = [
 
 efficiency = mc_efficiency(sampler_output_paths, keys=['rhat', 'ess'])
 
-# %% Save Monte Carlo efficiency as comma-separated text and as LaTeX to file
+# %% Save Monte Carlo efficiency
 
 df = pd.DataFrame(data=efficiency)
 

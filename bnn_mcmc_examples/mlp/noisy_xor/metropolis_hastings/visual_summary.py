@@ -6,7 +6,7 @@ import kanga.plots as ps
 
 from bnn_mcmc_examples.mlp.noisy_xor.metropolis_hastings.constants import sampler_output_path
 
-# %% Load chain arrays and correlation matrix from file
+# %% Load chain arrays and correlation matrix
 
 mean_mc_cor_mat = np.loadtxt(sampler_output_path.joinpath('mean_mc_cor.csv'), delimiter=',', skiprows=0)
 
