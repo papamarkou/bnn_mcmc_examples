@@ -1,17 +1,19 @@
 # %% Import packages
 
+import numpy as np
 import torch
 
 from pathlib import Path
-
-from bnn_mcmc_examples.datasets import data_paths
 
 # %% Define constants
 
 output_path = Path.home().joinpath('output', 'bnn_mcmc_examples', 'mlp', 'noisy_xor')
 
-input_size = 2
-mlp_dims = [input_size, 2, 1]
+num_classes = 4
+num_features = 2
+num_samples = np.repeat(250, num_classes)
+
+mlp_dims = [num_features, 2, 1]
 
 dtype = torch.float32
 
