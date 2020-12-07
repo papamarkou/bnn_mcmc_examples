@@ -42,7 +42,7 @@ su - $METAUSER -c "git -C $PYPKGDIR clone \"https://github.com/papamarkou/eeyore
 su - $METAUSER -c "$CONDABIN run -p $CONDAENV
 pip install -e \"$PYPKGDIR/eeyore\" -r \"$PYPKGDIR/eeyore/installation/requirements.txt\""
 
-su - $METAUSER -c "git -C $PYPKGDIR clone $PKGURL"
-su - $METAUSER -c "$CONDABIN run -p $CONDAENV pip install -e $PYPKGDIR/$PKGNAME -r $PKGDEVREQS"
+# su - $METAUSER -c "git -C $PYPKGDIR clone $PKGURL"
+# su - $METAUSER -c "$CONDABIN run -p $CONDAENV pip install -e $PYPKGDIR/$PKGNAME -r $PKGDEVREQS"
 
 su - $METAUSER -c "rm $BASEDIR/$CONDASCRIPT"

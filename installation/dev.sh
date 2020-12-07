@@ -36,6 +36,6 @@ git -C $PYPKGDIR clone "https://github.com/papamarkou/eeyore.git"
 $CONDABIN run -p $CONDAENV pip install -e "$PYPKGDIR/eeyore" -r "$PYPKGDIR/eeyore/installation/requirements.txt"
 
 git -C $PYPKGDIR clone $PKGURL
-$CONDABIN run -p $CONDAENV pip install -e "$PYPKGDIR/$PKGNAME" -r $PKGDEVREQS
+$CONDABIN run -p $CONDAENV pip install -e $PYPKGDIR/$PKGNAME -r $PKGDEVREQS
 
 rm $HOME/$CONDASCRIPT
