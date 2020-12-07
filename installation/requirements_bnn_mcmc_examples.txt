@@ -1,0 +1,6 @@
+numpy>=1.19.2
+pandas
+torch @ https://download.pytorch.org/whl/cpu/torch-1.7.0%2Bcpu-cp37-cp37m-linux_x86_64.whl
+eeyore>=0.0.14
+kanga>=0.0.17
+matplotlib>=3.3.3
