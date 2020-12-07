@@ -12,7 +12,11 @@ export PYPKGDIR="$BASEDIR/opt/python/packages"
 export CONDAENV="$CONDADIR/envs/$PKGNAME"
 export CONDABIN="$CONDADIR/bin/conda"
 export CONDASCRIPT='Miniconda3-latest-Linux-x86_64.sh'
+export KANGAURL='https://github.com/papamarkou/kanga.git'
+export EEYOREURL='https://github.com/papamarkou/eeyore.git'
 export PKGURL="https://github.com/papamarkou/$PKGNAME.git"
+export KANGADEVREQS="$PYPKGDIR/kanga/requirements.txt"
+export EEYOREDEVREQS="$PYPKGDIR/eeyore/installation/requirements.txt"
 export PKGDEVREQS="$PYPKGDIR/$PKGNAME/installation/requirements.txt"
 
 sudo apt-get update
@@ -35,12 +39,11 @@ su - $METAUSER -c "echo \"export PATH=$BINDIR:$PATH\" >> $BASEDIR/.bashrc"
 
 su - $METAUSER -c "mkdir -p $PYPKGDIR"
 
-su - $METAUSER -c "git -C $PYPKGDIR clone \"https://github.com/papamarkou/kanga.git\""
-su - $METAUSER -c "$CONDABIN run -p $CONDAENV pip install -e \"$PYPKGDIR/kanga\" -r \"$PYPKGDIR/kanga/requirements.txt\""
+su - $METAUSER -c "git -C $PYPKGDIR clone $KANGAURL"
+su - $METAUSER -c "$CONDABIN run -p $CONDAENV pip install -e $PYPKGDIR/kanga -r $KANGADEVREQS"
 
-su - $METAUSER -c "git -C $PYPKGDIR clone \"https://github.com/papamarkou/eeyore.git\""
-su - $METAUSER -c "$CONDABIN run -p $CONDAENV
-pip install -e \"$PYPKGDIR/eeyore\" -r \"$PYPKGDIR/eeyore/installation/requirements.txt\""
+su - $METAUSER -c "git -C $PYPKGDIR clone $EEYOREURL"
+su - $METAUSER -c "$CONDABIN run -p $CONDAENV pip install -e $PYPKGDIR/eeyore -r $EEYOREDEVREQS"
 
 # su - $METAUSER -c "git -C $PYPKGDIR clone $PKGURL"
 # su - $METAUSER -c "$CONDABIN run -p $CONDAENV pip install -e $PYPKGDIR/$PKGNAME -r $PKGDEVREQS"
