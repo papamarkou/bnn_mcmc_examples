@@ -9,16 +9,8 @@ export PYPKGDIR="$HOME/opt/python/packagesss"
 export CONDAENV="$CONDADIR/envs/$PKGNAME"
 export CONDABIN="$CONDADIR/bin/conda"
 export CONDASCRIPT='Miniconda3-latest-Linux-x86_64.sh'
-
-declare -a PKGNAMES=('kanga' 'eeyore' 'bnn_mcmc_examples')
-
-pkgurl () {
-  echo "https://github.com/papamarkou/$1.git"
-}
-
-pkgdevreqs () {
-  echo "$PYPKGDIR/$1/installation/requirements_$1.txt"
-}
+export PKGURL="https://github.com/papamarkou/$PKGNAME.git"
+export PKGDEVREQS="$PYPKGDIR/$PKGNAME/installation/requirements.txt"
 
 sudo apt-get update
 
@@ -36,10 +28,13 @@ $CONDABIN config --set auto_activate_base false
 
 mkdir -p $PYPKGDIR
 
-for pkg in "${PKGNAMES[@]}"
-do
-   git -C $PYPKGDIR clone $(pkgurl $pkg)
-   $CONDABIN run -p $CONDAENV pip install -e $PYPKGDIR/$pkg -r $(pkgdevreqs $pkg)
-done
+git -C $PYPKGDIR clone "https://github.com/papamarkou/kanga.git"
+$CONDABIN run -p $CONDAENV pip install -e "$PYPKGDIR/kanga" -r "$PYPKGDIR/kanga/requirements.txt"
+
+git -C $PYPKGDIR clone "https://github.com/papamarkou/eeyore.git"
+$CONDABIN run -p $CONDAENV pip install -e "$PYPKGDIR/eeyore" -r "$PYPKGDIR/eeyore/installation/requirements.txt"
+
+git -C $PYPKGDIR clone $PKGURL
+$CONDABIN run -p $CONDAENV pip install -e "$PYPKGDIR/$PKGNAME" -r $PKGDEVREQS
 
 rm $HOME/$CONDASCRIPT
