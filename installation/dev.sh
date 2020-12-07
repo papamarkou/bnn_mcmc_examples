@@ -5,7 +5,7 @@
 export PKGNAME='bnn_mcmc_examples'
 export PYVERSION='3.7'
 export CONDADIR="$HOME/opt/continuum/miniconda/miniconda3"
-export PYPKGDIR="$HOME/opt/python/packages"
+export PYPKGDIR="$HOME/opt/python/packagesss"
 export CONDAENV="$CONDADIR/envs/$PKGNAME"
 export CONDABIN="$CONDADIR/bin/conda"
 export CONDASCRIPT='Miniconda3-latest-Linux-x86_64.sh'
