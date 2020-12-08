@@ -17,9 +17,9 @@ export KANGADEVREQS="$PYPKGDIR/kanga/requirements.txt"
 export EEYOREDEVREQS="$PYPKGDIR/eeyore/installation/requirements.txt"
 export PKGDEVREQS="$PYPKGDIR/$PKGNAME/installation/requirements.txt"
 
-sudo apt-get update
+# sudo apt-get update
 
-sudo apt-get install tree
+# sudo apt-get install tree
 
 wget https://repo.anaconda.com/miniconda/$CONDASCRIPT
 chmod u+x $CONDASCRIPT
