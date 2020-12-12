@@ -5,10 +5,12 @@ import torch
 
 from pathlib import Path
 
+from bnn_mcmc_examples.datasets import data_paths
+
 # %% Define constants
 
 setting_name = 'setting1'
-
+data_path = data_paths['noisy_xor'].joinpath(setting_name)
 output_path = Path.home().joinpath('output', 'bnn_mcmc_examples', 'mlp', 'noisy_xor', setting_name)
 
 num_classes = 4
