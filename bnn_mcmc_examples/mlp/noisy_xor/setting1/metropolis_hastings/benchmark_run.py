@@ -14,7 +14,7 @@ from bnn_mcmc_examples.mlp.noisy_xor.setting1.model import model
 
 # %% Setup proposal variance and proposal kernel for Metropolis-Hastings sampler
 
-proposal_scale = 1.55
+proposal_scale = 0.1
 
 kernel = NormalKernel(
     torch.zeros(model.num_params(), dtype=model.dtype),

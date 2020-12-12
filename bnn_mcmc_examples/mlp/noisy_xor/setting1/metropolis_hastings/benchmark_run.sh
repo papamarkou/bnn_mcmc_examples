@@ -13,4 +13,4 @@ qsub \
   -N mlp_noisy_xor_mh \
   -o $OUTPUTPATH \
   -e $OUTPUTPATH \
-  $CONDABIN run -p $CONDAENV python benchmark.py
+  $CONDABIN run -p $CONDAENV python benchmark_run.py

@@ -15,7 +15,7 @@ output_path = Path.home().joinpath('output', 'bnn_mcmc_examples', 'mlp', 'noisy_
 
 num_classes = 4
 num_features = 2
-num_samples = np.repeat(100, num_classes)
+num_samples = np.repeat(250, num_classes)
 
 mlp_dims = [num_features, 2, 1]
 
