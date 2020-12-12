@@ -7,7 +7,7 @@ from torch.distributions import Normal
 from eeyore.constants import loss_functions
 from eeyore.models import mlp
 
-from .constants import dtype, mlp_dims
+from bnn_mcmc_examples.mlp.noisy_xor.setting1.constants import dtype, mlp_dims
 
 # %% Setup MLP model
 

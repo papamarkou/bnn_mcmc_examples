@@ -4,8 +4,10 @@ import numpy as np
 
 from kanga.chains import ChainArrays
 
-from bnn_mcmc_examples.mlp.noisy_xor.constants import num_chains
-from bnn_mcmc_examples.mlp.noisy_xor.metropolis_hastings.constants import sampler_output_path, sampler_output_run_paths
+from bnn_mcmc_examples.mlp.noisy_xor.setting1.constants import num_chains
+from bnn_mcmc_examples.mlp.noisy_xor.setting1.metropolis_hastings.constants import (
+    sampler_output_path, sampler_output_run_paths
+)
 
 # %% Load chain arrays, covariance matrices and runtimes
 

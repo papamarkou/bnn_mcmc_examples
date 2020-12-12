@@ -2,7 +2,7 @@
 
 import pandas as pd
 
-from bnn_mcmc_examples.mlp.noisy_xor.constants import output_path
+from bnn_mcmc_examples.mlp.noisy_xor.setting1.constants import output_path
 from bnn_mcmc_examples.stats.mc_efficiency import mc_efficiency
 
 # %% Define sampler-specific output directories

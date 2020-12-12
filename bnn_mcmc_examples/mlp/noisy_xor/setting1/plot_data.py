@@ -5,9 +5,9 @@ import numpy as np
 
 from pathlib import Path
 
-from bnn_mcmc_examples.mlp.noisy_xor.constants import output_path
-from bnn_mcmc_examples.mlp.noisy_xor.data import noisy_xor
-from bnn_mcmc_examples.mlp.noisy_xor.constants import num_classes, num_samples
+from bnn_mcmc_examples.mlp.noisy_xor.setting1.constants import output_path
+from bnn_mcmc_examples.mlp.noisy_xor.setting1.data import noisy_xor
+from bnn_mcmc_examples.mlp.noisy_xor.setting1.constants import num_classes, num_samples
 
 # %% Plot noisy XOR points
 

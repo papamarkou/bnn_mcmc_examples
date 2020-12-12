@@ -3,11 +3,11 @@
 import numpy as np
 
 from bnn_mcmc_examples.datasets import data_paths, simulate_xor
-from bnn_mcmc_examples.mlp.noisy_xor.constants import num_samples
+from bnn_mcmc_examples.mlp.noisy_xor.setting1.constants import num_samples, setting_name
 
 # %% Create data directory if it does not exist
 
-data_paths['noisy_xor'].mkdir(parents=True, exist_ok=True)
+data_paths['noisy_xor'].joinpath(setting_name).mkdir(parents=True, exist_ok=True)
 
 # %% Simulate noisy XOR points
 
