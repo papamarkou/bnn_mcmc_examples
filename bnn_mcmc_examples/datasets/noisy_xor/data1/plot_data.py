@@ -3,15 +3,14 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from pathlib import Path
+from bnn_mcmc_examples.datasets.noisy_xor.data1.constants import num_classes, num_samples, output_path
+from bnn_mcmc_examples.datasets.noisy_xor.data1.load_data import noisy_xor
 
-from bnn_mcmc_examples.mlp.noisy_xor.setting1.constants import output_path
-from bnn_mcmc_examples.mlp.noisy_xor.setting1.data import noisy_xor
-from bnn_mcmc_examples.mlp.noisy_xor.setting1.constants import num_classes, num_samples
+# %% Create output directory if it does not exist
+
+output_path.mkdir(parents=True, exist_ok=True)
 
 # %% Plot noisy XOR points
-
-Path(output_path).mkdir(parents=True, exist_ok=True)
 
 num_samples_cumsum = np.hstack((0, num_samples)).cumsum()
 
