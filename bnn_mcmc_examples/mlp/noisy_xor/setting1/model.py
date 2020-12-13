@@ -1,5 +1,6 @@
 # %% Import packages
 
+import numpy as np
 import torch
 
 from torch.distributions import Normal
@@ -15,7 +16,7 @@ hparams = mlp.Hyperparameters(dims=mlp_dims)
 
 model = mlp.MLP(loss=loss_functions['binary_classification'], hparams=hparams, dtype=dtype)
 
-prior_scale = 3.
+prior_scale = np.sqrt(10.)
 
 model.prior = Normal(
     torch.zeros(model.num_params(), dtype=model.dtype),

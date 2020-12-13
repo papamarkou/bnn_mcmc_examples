@@ -16,7 +16,7 @@ dtype = torch.float32
 
 num_chains = 4
 
-num_epochs = 1100
-num_burnin_epochs = 100
+num_epochs = 11000
+num_burnin_epochs = 0
 verbose = True
-verbose_step = 100
+verbose_step = 1000

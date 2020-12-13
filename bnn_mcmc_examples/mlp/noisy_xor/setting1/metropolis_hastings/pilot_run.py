@@ -1,5 +1,6 @@
 # %% Import packages
 
+import numpy as np
 import torch
 
 from datetime import timedelta
@@ -20,7 +21,7 @@ _, dataloader = load_data(dtype=dtype)
 
 # %% Setup proposal variance and proposal kernel for Metropolis-Hastings sampler
 
-proposal_scale = 0.2
+proposal_scale = np.sqrt(0.02)
 
 kernel = NormalKernel(
     torch.zeros(model.num_params(), dtype=model.dtype),
