@@ -13,8 +13,8 @@ training_data_name = 'training'
 test_data_name = 'test'
 
 data_path = data_paths['noisy_xor'].joinpath(data_base_name)
-training_data_path = data_base_name.joinpath(training_data_name)
-test_data_path = data_base_name.joinpath(test_data_name)
+training_data_path = data_path.joinpath(training_data_name)
+test_data_path = data_path.joinpath(test_data_name)
 output_path = Path.home().joinpath('output', 'bnn_mcmc_examples', 'data', 'noisy_xor', data_base_name)
 
 num_classes = 4
