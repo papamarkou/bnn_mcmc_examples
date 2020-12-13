@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 
-from bnn_mcmc_examples.datasets.noisy_xor.data1.constants import num_classes, num_samples, output_path
+from bnn_mcmc_examples.datasets.noisy_xor.data1.constants import num_classes, num_training_samples, output_path
 from bnn_mcmc_examples.datasets.noisy_xor.data1.load_data import load_data
 
 # %% Load data
@@ -17,7 +17,7 @@ output_path.mkdir(parents=True, exist_ok=True)
 
 # %% Plot noisy XOR points
 
-num_samples_cumsum = np.hstack((0, num_samples)).cumsum()
+num_training_samples_cumsum = np.hstack((0, num_training_samples)).cumsum()
 
 # print(plt.rcParams['axes.prop_cycle'].by_key()['color'])
 cols = ['#1f77b4', '#ff7f0e', '#d62728', '#e377c2']
@@ -38,8 +38,8 @@ ax.set_box_aspect(1)
 
 for i in range(num_classes):
     ax.plot(
-        noisy_xor.x[num_samples_cumsum[i]:num_samples_cumsum[i+1], 0],
-        noisy_xor.x[num_samples_cumsum[i]:num_samples_cumsum[i+1], 1],
+        noisy_xor.x[num_training_samples_cumsum[i]:num_training_samples_cumsum[i+1], 0],
+        noisy_xor.x[num_training_samples_cumsum[i]:num_training_samples_cumsum[i+1], 1],
         'o',
         color=cols[i],
         marker='o',
