@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader
 
 from eeyore.datasets import XYDataset
 
-from bnn_mcmc_examples.datasets.noisy_xor.data1.constants import data_path
+from bnn_mcmc_examples.datasets.noisy_xor.data2.constants import data_path
 
 # %% Function for loading XOR data
 

@@ -3,7 +3,7 @@
 import numpy as np
 
 from bnn_mcmc_examples.datasets.noisy_xor import simulate_xor
-from bnn_mcmc_examples.datasets.noisy_xor.data1.constants import data_path, num_samples
+from bnn_mcmc_examples.datasets.noisy_xor.data2.constants import data_path, num_samples
 
 # %% Create data directory if it does not exist
 
