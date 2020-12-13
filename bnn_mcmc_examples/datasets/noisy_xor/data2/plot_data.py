@@ -2,9 +2,14 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
+import torch
 
-from bnn_mcmc_examples.datasets.noisy_xor.data2.constants import num_classes, num_samples, output_path
-from bnn_mcmc_examples.datasets.noisy_xor.data2.load_data import noisy_xor
+from bnn_mcmc_examples.datasets.noisy_xor.data1.constants import num_classes, num_samples, output_path
+from bnn_mcmc_examples.datasets.noisy_xor.data1.load_data import load_data
+
+# %% Load data
+
+noisy_xor, _ = load_data(dtype=torch.float32)
 
 # %% Create output directory if it does not exist
 

@@ -1,6 +1,5 @@
 # %% Import packages
 
-import numpy as np
 import torch
 
 from pathlib import Path
@@ -9,9 +8,7 @@ from pathlib import Path
 
 output_path = Path.home().joinpath('output', 'bnn_mcmc_examples', 'mlp', 'noisy_xor', 'setting1')
 
-num_classes = 4
 num_features = 2
-num_samples = np.repeat(250, num_classes)
 
 mlp_dims = [num_features, 2, 1]
 

@@ -1,7 +1,6 @@
 # %% Import packages
 
 import numpy as np
-import torch
 
 from pathlib import Path
 
@@ -15,5 +14,3 @@ output_path = Path.home().joinpath('output', 'bnn_mcmc_examples', 'data', 'noisy
 
 num_classes = 4
 num_samples = np.repeat(125, num_classes)
-
-dtype = torch.float32

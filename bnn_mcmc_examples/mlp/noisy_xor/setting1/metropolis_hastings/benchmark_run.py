@@ -5,12 +5,16 @@ import torch
 from eeyore.kernels import NormalKernel
 from eeyore.samplers import MetropolisHastings
 
+from bnn_mcmc_examples.datasets.noisy_xor.data1.load_data import load_data
 from bnn_mcmc_examples.mlp.noisy_xor.setting1.constants import (
-    num_chains, num_epochs, num_burnin_epochs, verbose, verbose_step
+    dtype, num_chains, num_epochs, num_burnin_epochs, verbose, verbose_step
 )
-from bnn_mcmc_examples.mlp.noisy_xor.setting1.data import dataloader
 from bnn_mcmc_examples.mlp.noisy_xor.setting1.metropolis_hastings.constants import sampler_output_path
 from bnn_mcmc_examples.mlp.noisy_xor.setting1.model import model
+
+# %% Load dataloader
+
+_, dataloader = load_data(dtype=dtype)
 
 # %% Setup proposal variance and proposal kernel for Metropolis-Hastings sampler
 
