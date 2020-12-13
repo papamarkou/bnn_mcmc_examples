@@ -4,7 +4,8 @@ from torch.utils.data import DataLoader
 
 from eeyore.datasets import XYDataset
 
-from bnn_mcmc_examples.mlp.noisy_xor.setting1.constants import data_path, dtype
+from bnn_mcmc_examples.mlp.noisy_xor.generate_data1 import data_path
+from bnn_mcmc_examples.mlp.noisy_xor.setting1.constants import dtype
 
 # %% Load XOR data
 
