@@ -15,5 +15,5 @@ x, y = simulate_xor(n=num_test_samples)
 
 # %% Save simulated noisy XOR points
 
-np.savetxt(data_path.joinpath('x.csv'), x, delimiter=',', header='x1,x2', comments='')
-np.savetxt(data_path.joinpath('y.csv'), y, fmt='%d', header='y', comments='')
+np.savetxt(test_data_path.joinpath('x.csv'), x, delimiter=',', header='x1,x2', comments='')
+np.savetxt(test_data_path.joinpath('y.csv'), y, fmt='%d', header='y', comments='')
