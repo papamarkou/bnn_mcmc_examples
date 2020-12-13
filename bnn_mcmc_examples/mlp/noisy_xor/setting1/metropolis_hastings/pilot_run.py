@@ -20,7 +20,7 @@ _, dataloader = load_data(dtype=dtype)
 
 # %% Setup proposal variance and proposal kernel for Metropolis-Hastings sampler
 
-proposal_scale = 0.1
+proposal_scale = 0.2
 
 kernel = NormalKernel(
     torch.zeros(model.num_params(), dtype=model.dtype),

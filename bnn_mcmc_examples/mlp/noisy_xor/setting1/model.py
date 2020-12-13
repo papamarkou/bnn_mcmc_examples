@@ -15,7 +15,7 @@ hparams = mlp.Hyperparameters(dims=mlp_dims)
 
 model = mlp.MLP(loss=loss_functions['binary_classification'], hparams=hparams, dtype=dtype)
 
-prior_scale = 1.5
+prior_scale = 3.
 
 model.prior = Normal(
     torch.zeros(model.num_params(), dtype=model.dtype),
