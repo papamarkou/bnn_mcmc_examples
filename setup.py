@@ -31,7 +31,7 @@ setup(
     ],
     keywords=['Bayesian', 'MCMC', 'Monte Carlo', 'neural networks'],
     python_requires='>=3.6',
-    install_requires=['numpy>=1.19.2', 'pandas', 'torch>=1.6.0', 'eeyore>=0.0.14', 'kanga>=0.0.17', 'matplotlib>=3.3.3'],
+    install_requires=['numpy>=1.19.2', 'pandas', 'torch>=1.6.0', 'eeyore>=0.0.16', 'kanga>=0.0.17', 'matplotlib>=3.3.3'],
     package_data={'bnn_mcmc_examples': ['data/*/x.csv', 'data/*/y.csv', 'data/*/readme.md']},
     include_package_data=True,
     zip_safe=False
