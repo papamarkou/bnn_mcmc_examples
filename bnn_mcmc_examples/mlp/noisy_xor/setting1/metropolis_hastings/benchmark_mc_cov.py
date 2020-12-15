@@ -13,7 +13,7 @@ from bnn_mcmc_examples.mlp.noisy_xor.setting1.metropolis_hastings.constants impo
 
 chain_arrays = ChainArrays.from_file(sampler_output_run_paths, keys=['sample'])
 
-# %% Compute Monte Carlo covariance matrix
+# %% Compute Monte Carlo covariance matrices
 
 mc_cov_mats = chain_arrays.mc_cov()
 
@@ -26,7 +26,7 @@ for i in range(num_chains):
 
 np.savetxt(sampler_output_path.joinpath('mean_mc_cov.csv'), mc_cov_mats.mean(0), delimiter=',')
 
-# %% Compute Monte Carlo correlation matrix
+# %% Compute Monte Carlo correlation matrices
 
 mc_cor_mats = chain_arrays.mc_cor(mc_cov_mat=mc_cov_mats)
 
