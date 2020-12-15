@@ -21,6 +21,6 @@ mean_mc_cor_mat = np.loadtxt(sampler_output_path.joinpath('mean_mc_cor.csv'), de
 # %% Plot heat maps of correlation matrices
 
 for i in range(num_chains):
-    ps.cor_heatmap(mc_cor_mats[i], fname=sampler_output_path.joinpath('mc_cor'+str(i)+'.png'))
+    ps.cor_heatmap(mc_cor_mats[i], fname=sampler_output_run_paths[i].joinpath('mc_cor.png'))
 
 ps.cor_heatmap(mean_mc_cor_mat, fname=sampler_output_path.joinpath('mean_mc_cor.png'))
