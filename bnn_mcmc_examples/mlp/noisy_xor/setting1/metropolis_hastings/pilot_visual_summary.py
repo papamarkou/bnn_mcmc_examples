@@ -11,6 +11,12 @@ from bnn_mcmc_examples.mlp.noisy_xor.setting1.model import model
 
 chain_array = ChainArray.from_file(keys=['sample', 'accepted'], path=sampler_output_pilot_path)
 
+# %% Get the first 10000 iterations
+
+# n = 10000
+# chain_array.vals['sample'] = chain_array.vals['sample'][:n, ]
+# chain_array.vals['accepted'] = chain_array.vals['accepted'][:n]
+
 # %% Plot traces of simulated chain
 
 for i in range(model.num_params()):
