@@ -4,6 +4,8 @@ bnn_mcmc_examples/datasets/__pycache__
 bnn_mcmc_examples/datasets/noisy_xor/__pycache__
 bnn_mcmc_examples/datasets/noisy_xor/data1/__pycache__
 bnn_mcmc_examples/datasets/noisy_xor/data2/__pycache__
+bnn_mcmc_examples/mlp/exact_xor/__pycache__
+bnn_mcmc_examples/mlp/exact_xor/metropolis_hastings/__pycache__
 bnn_mcmc_examples/mlp/noisy_xor/setting1/__pycache__
 bnn_mcmc_examples/mlp/noisy_xor/setting1/metropolis_hastings/__pycache__
 bnn_mcmc_examples/mlp/noisy_xor/setting2/__pycache__
