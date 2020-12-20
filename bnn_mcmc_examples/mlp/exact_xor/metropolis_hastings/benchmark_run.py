@@ -6,17 +6,10 @@ import torch
 from eeyore.kernels import NormalKernel
 from eeyore.samplers import MetropolisHastings
 
-from bnn_mcmc_examples.datasets import load_xydataset_from_file
-from bnn_mcmc_examples.datasets.noisy_xor.data1.constants import training_data_path
-from bnn_mcmc_examples.mlp.noisy_xor.setting1.constants import (
-    dtype, num_chains, num_epochs, num_burnin_epochs, verbose, verbose_step
-)
-from bnn_mcmc_examples.mlp.noisy_xor.setting1.metropolis_hastings.constants import sampler_output_path
-from bnn_mcmc_examples.mlp.noisy_xor.setting1.model import model
-
-# %% Load dataloader
-
-_, dataloader = load_xydataset_from_file(training_data_path, dtype=dtype)
+from bnn_mcmc_examples.mlp.exact_xor.constants import num_chains, num_epochs, num_burnin_epochs, verbose, verbose_step
+from bnn_mcmc_examples.mlp.exact_xor.dataloader import dataloader
+from bnn_mcmc_examples.mlp.exact_xor.metropolis_hastings.constants import sampler_output_path
+from bnn_mcmc_examples.mlp.exact_xor.model import model
 
 # %% Setup proposal variance and proposal kernel for Metropolis-Hastings sampler
 

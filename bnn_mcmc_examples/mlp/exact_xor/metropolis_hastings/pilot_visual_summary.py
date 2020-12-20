@@ -4,8 +4,8 @@ import kanga.plots as ps
 
 from kanga.chains import ChainArray
 
-from bnn_mcmc_examples.mlp.noisy_xor.setting1.metropolis_hastings.constants import sampler_output_pilot_path
-from bnn_mcmc_examples.mlp.noisy_xor.setting1.model import model
+from bnn_mcmc_examples.mlp.exact_xor.metropolis_hastings.constants import sampler_output_pilot_path
+from bnn_mcmc_examples.mlp.exact_xor.model import model
 
 # %% Load chain array
 

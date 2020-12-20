@@ -6,7 +6,7 @@ from pathlib import Path
 
 # %% Define constants
 
-output_path = Path.home().joinpath('output', 'bnn_mcmc_examples', 'mlp', 'noisy_xor', 'setting1')
+output_path = Path.home().joinpath('output', 'bnn_mcmc_examples', 'mlp', 'exact_xor')
 
 num_features = 2
 

@@ -1,6 +1,6 @@
 # %% Import packages
 
-from bnn_mcmc_examples.mlp.noisy_xor.setting1.constants import num_chains, output_path
+from bnn_mcmc_examples.mlp.exact_xor.constants import num_chains, output_path
 
 # %% Define sampler-specific output directories
 
