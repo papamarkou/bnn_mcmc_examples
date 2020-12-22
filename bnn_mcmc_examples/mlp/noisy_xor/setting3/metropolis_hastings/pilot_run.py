@@ -13,14 +13,14 @@ from eeyore.samplers import MetropolisHastings
 from bnn_mcmc_examples.datasets import load_xydataset_from_file
 from bnn_mcmc_examples.datasets.noisy_xor.data2.constants import training_data_path
 from bnn_mcmc_examples.mlp.noisy_xor.setting3.constants import (
-    batch_size, dtype, num_burnin_epochs, num_epochs, verbose, verbose_step
+    dtype, mcmc_batch_size, num_mcmc_burnin_epochs, num_mcmc_epochs, verbose, mcmc_verbose_step
 )
 from bnn_mcmc_examples.mlp.noisy_xor.setting3.metropolis_hastings.constants import sampler_output_pilot_path
 from bnn_mcmc_examples.mlp.noisy_xor.setting3.model import model
 
 # %% Load dataloader
 
-_, dataloader = load_xydataset_from_file(training_data_path, dtype=dtype, batch_size=batch_size)
+_, dataloader = load_xydataset_from_file(training_data_path, dtype=dtype, batch_size=mcmc_batch_size)
 
 # %% Setup proposal variance and proposal kernel for Metropolis-Hastings sampler
 
@@ -41,7 +41,9 @@ sampler = MetropolisHastings(
 
 start_time = timer()
 
-sampler.run(num_epochs=num_epochs, num_burnin_epochs=num_burnin_epochs, verbose=verbose, verbose_step=verbose_step)
+sampler.run(
+    num_epochs=num_mcmc_epochs, num_burnin_epochs=num_mcmc_burnin_epochs, verbose=verbose, verbose_step=mcmc_verbose_step
+)
 
 end_time = timer()
 print("Time taken: {}".format(timedelta(seconds=end_time-start_time)))

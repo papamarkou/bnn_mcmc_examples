@@ -12,7 +12,9 @@ from eeyore.samplers import MetropolisHastings
 
 from bnn_mcmc_examples.datasets import load_xydataset_from_file
 from bnn_mcmc_examples.datasets.noisy_xor.data2.constants import training_data_path
-from bnn_mcmc_examples.mlp.noisy_xor.setting2.constants import dtype, num_burnin_epochs, num_epochs, verbose, verbose_step
+from bnn_mcmc_examples.mlp.noisy_xor.setting2.constants import (
+    dtype, num_mcmc_burnin_epochs, num_mcmc_epochs, verbose, mcmc_verbose_step
+)
 from bnn_mcmc_examples.mlp.noisy_xor.setting2.metropolis_hastings.constants import sampler_output_pilot_path
 from bnn_mcmc_examples.mlp.noisy_xor.setting2.model import model
 
@@ -39,7 +41,9 @@ sampler = MetropolisHastings(
 
 start_time = timer()
 
-sampler.run(num_epochs=num_epochs, num_burnin_epochs=num_burnin_epochs, verbose=verbose, verbose_step=verbose_step)
+sampler.run(
+    num_epochs=num_mcmc_epochs, num_burnin_epochs=num_mcmc_burnin_epochs, verbose=verbose, verbose_step=mcmc_verbose_step
+)
 
 end_time = timer()
 print("Time taken: {}".format(timedelta(seconds=end_time-start_time)))

@@ -10,7 +10,7 @@ from eeyore.chains import ChainList
 from eeyore.kernels import NormalKernel
 from eeyore.samplers import MetropolisHastings
 
-from bnn_mcmc_examples.mlp.exact_xor.constants import num_burnin_epochs, num_epochs, verbose, verbose_step
+from bnn_mcmc_examples.mlp.exact_xor.constants import num_mcmc_burnin_epochs, num_mcmc_epochs, verbose, mcmc_verbose_step
 from bnn_mcmc_examples.mlp.exact_xor.dataloader import dataloader
 from bnn_mcmc_examples.mlp.exact_xor.metropolis_hastings.constants import sampler_output_pilot_path
 from bnn_mcmc_examples.mlp.exact_xor.model import model
@@ -34,7 +34,9 @@ sampler = MetropolisHastings(
 
 start_time = timer()
 
-sampler.run(num_epochs=num_epochs, num_burnin_epochs=num_burnin_epochs, verbose=verbose, verbose_step=verbose_step)
+sampler.run(
+    num_epochs=num_mcmc_epochs, num_burnin_epochs=num_mcmc_burnin_epochs, verbose=verbose, verbose_step=mcmc_verbose_step
+)
 
 end_time = timer()
 print("Time taken: {}".format(timedelta(seconds=end_time-start_time)))

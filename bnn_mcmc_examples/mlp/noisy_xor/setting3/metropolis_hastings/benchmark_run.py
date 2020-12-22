@@ -9,14 +9,14 @@ from eeyore.samplers import MetropolisHastings
 from bnn_mcmc_examples.datasets import load_xydataset_from_file
 from bnn_mcmc_examples.datasets.noisy_xor.data2.constants import training_data_path
 from bnn_mcmc_examples.mlp.noisy_xor.setting3.constants import (
-    batch_size, dtype, num_chains, num_epochs, num_burnin_epochs, verbose, verbose_step
+    dtype, mcmc_batch_size, num_chains, num_mcmc_epochs, num_mcmc_burnin_epochs, verbose, mcmc_verbose_step
 )
 from bnn_mcmc_examples.mlp.noisy_xor.setting3.metropolis_hastings.constants import sampler_output_path
 from bnn_mcmc_examples.mlp.noisy_xor.setting3.model import model
 
 # %% Load dataloader
 
-_, dataloader = load_xydataset_from_file(training_data_path, dtype=dtype, batch_size=batch_size)
+_, dataloader = load_xydataset_from_file(training_data_path, dtype=dtype, batch_size=mcmc_batch_size)
 
 # %% Setup proposal variance and proposal kernel for Metropolis-Hastings sampler
 
@@ -35,12 +35,12 @@ sampler = MetropolisHastings(model, theta0=model.prior.sample(), dataloader=data
 
 sampler.benchmark(
     num_chains=num_chains,
-    num_epochs=num_epochs,
-    num_burnin_epochs=num_burnin_epochs,
+    num_epochs=num_mcmc_epochs,
+    num_burnin_epochs=num_mcmc_burnin_epochs,
     path=sampler_output_path,
     check_conditions=lambda chain, runtime : 0.05 <= chain.acceptance_rate() <= 0.70,
     verbose=verbose,
-    verbose_step=verbose_step,
+    verbose_step=mcmc_verbose_step,
     print_acceptance=True,
     print_runtime=True
 )

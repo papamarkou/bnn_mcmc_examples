@@ -9,7 +9,7 @@ from eeyore.samplers import MetropolisHastings
 from bnn_mcmc_examples.datasets import load_xydataset_from_file
 from bnn_mcmc_examples.datasets.noisy_xor.data1.constants import training_data_path
 from bnn_mcmc_examples.mlp.noisy_xor.setting1.constants import (
-    dtype, num_chains, num_epochs, num_burnin_epochs, verbose, verbose_step
+    dtype, num_chains, num_mcmc_epochs, num_mcmc_burnin_epochs, verbose, mcmc_verbose_step
 )
 from bnn_mcmc_examples.mlp.noisy_xor.setting1.metropolis_hastings.constants import sampler_output_path
 from bnn_mcmc_examples.mlp.noisy_xor.setting1.model import model
@@ -35,12 +35,12 @@ sampler = MetropolisHastings(model, theta0=model.prior.sample(), dataloader=data
 
 sampler.benchmark(
     num_chains=num_chains,
-    num_epochs=num_epochs,
-    num_burnin_epochs=num_burnin_epochs,
+    num_epochs=num_mcmc_epochs,
+    num_burnin_epochs=num_mcmc_burnin_epochs,
     path=sampler_output_path,
     check_conditions=lambda chain, runtime : 0.15 <= chain.acceptance_rate() <= 0.50,
     verbose=verbose,
-    verbose_step=verbose_step,
+    verbose_step=mcmc_verbose_step,
     print_acceptance=True,
     print_runtime=True
 )
