@@ -6,8 +6,8 @@ from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.constants import dtype
 
 # %% Load training dataloader
 
-_, training_dataloader = load_xydataset_from_file(training_data_path, dtype=dtype)
+training_dataset, training_dataloader = load_xydataset_from_file(training_data_path, dtype=dtype)
 
 # %% Load test dataloader
 
-_, test_dataloader = load_xydataset_from_file(test_data_path, dtype=dtype)
+test_dataset, test_dataloader = load_xydataset_from_file(test_data_path, dtype=dtype)
