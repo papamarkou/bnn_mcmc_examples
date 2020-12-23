@@ -21,7 +21,7 @@ num_mcmc_burnin_epochs = 0
 
 num_optim_solutions = 10000
 
-num_optim_iterations = 5000
+num_optim_epochs = 5000
 
 verbose = True
 mcmc_verbose_step = 1000

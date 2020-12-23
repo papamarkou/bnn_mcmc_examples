@@ -1,3 +1,7 @@
+# %% Thoughts
+
+# Save solutions, metrics, runtimes and possibly losses
+
 # %% Import packages
 
 import os
