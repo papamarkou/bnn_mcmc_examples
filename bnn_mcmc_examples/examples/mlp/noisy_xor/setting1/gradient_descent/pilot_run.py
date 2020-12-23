@@ -17,6 +17,20 @@ from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.model import model
 _, dataloader = load_xydataset_from_file(training_data_path, dtype=dtype)
 data, labels = next(iter(dataloader))
 
+# %%
+
+def train(model, loss_fn, dataloader, optimizer, num_epochs):
+    for epoch in range(num_epochs):
+        for batch_idx, (input, target) in enumerate(dataloader):
+            def closure():
+                optimizer.zero_grad()
+                output = model(input)
+                loss = loss_fn(output, target)
+                loss.backward()
+                return loss
+
+            optimizer.step(closure)
+
 # %% Setup optimizer
 
 lr = 0.001
