@@ -2,21 +2,46 @@
 
 from sklearn.metrics import accuracy_score
 
-from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.dataloaders import test_dataloader
+from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.dataloaders import test_dataloader, training_dataloader
+
+# %% Load training data and labels
+
+training_data, training_labels = next(iter(training_dataloader))
+
+# %% Compute training logits
+
+training_logits = model(training_data)
+
+# Make training predictions
+
+training_preds = training_logits.squeeze() > 0.5
+
+# %% Compute training accuracy
+
+print(accuracy_score(training_preds, training_labels.squeeze()))
+# (preds == labels.squeeze()).sum()/len(labels.squeeze())
+
+# %% Show parameter values
+
+print(model.get_params())
 
 # %% Load test data and labels
 
-data, labels = next(iter(test_dataloader))
+test_data, test_labels = next(iter(test_dataloader))
 
-# %% Compute logits
+# %% Compute test logits
 
-logits = model(data)
+test_logits = model(test_data)
 
-# Make predictions
+# Make test predictions
 
-preds = logits.squeeze() > 0.5
+test_preds = test_logits.squeeze() > 0.5
 
-# %% Compute accuracy
+# %% Compute test accuracy
 
-accuracy_score(preds, labels.squeeze())
+print(accuracy_score(test_preds, test_labels.squeeze()))
 # (preds == labels.squeeze()).sum()/len(labels.squeeze())
+
+# %% Show parameter values
+
+print(model.get_params())
