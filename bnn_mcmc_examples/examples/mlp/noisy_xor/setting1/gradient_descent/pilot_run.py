@@ -21,7 +21,7 @@ optimizer = SGD(model.parameters(), lr=lr, momentum=momentum)
 
 # %% Train model
 
-loss_vals, metric_vals = train(
+loss_vals, metric_vals, terminating_epoch = train(
     model,
     training_dataloader,
     optimizer,

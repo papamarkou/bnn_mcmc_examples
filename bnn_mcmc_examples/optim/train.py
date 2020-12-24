@@ -21,9 +21,11 @@ def train(
     loss_vals = []
     metric_vals = []
     is_break = False
+    terminating_epoch = num_epochs
 
     for epoch in range(num_epochs):
         if terminate_early and is_break:
+            terminating_epoch = epoch
             break
 
         for batch_idx, (input, target) in enumerate(dataloader):
@@ -50,4 +52,4 @@ def train(
                         if stop_fn(metric_val):
                             is_break = True
 
-    return loss_vals, metric_vals
+    return loss_vals, metric_vals, terminating_epoch
