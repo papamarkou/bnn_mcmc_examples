@@ -7,6 +7,7 @@ def train(
     monitor_step=None,
     save_loss=False,
     save_metric=False,
+    save_metric_mean=False,
     terminate_early=False,
     pred_fn=None,
     metric_fn=None,
@@ -15,13 +16,16 @@ def train(
     if loss_fn is None:
         loss_fn = model.loss
 
-    if (save_loss or save_metric) and (monitor_step is None):
+    if (save_loss or save_metric or save_metric_mean) and (monitor_step is None):
         monitor_step = len(dataloader)
 
     loss_vals = []
     metric_vals = []
-    is_break = False
+    metric_mean_vals = []
     terminating_epoch = num_epochs
+    num_batches = 0
+    metric_mean_val = 0
+    is_break = False
 
     for epoch in range(num_epochs):
         if terminate_early and is_break:
@@ -36,20 +40,32 @@ def train(
                 loss.backward()
                 return loss, output
 
+            num_batches = num_batches + 1
+
             loss_val, output = optimizer.step(closure)
 
             if ((batch_idx == 0) or ((batch_idx + 1) % monitor_step == 0)):
                 if save_loss:
                     loss_vals.append(loss_val.item())
 
-                if save_metric or terminate_early:
+                if save_metric or save_metric_mean or terminate_early:
                     metric_val = metric_fn(pred_fn(output), target)
 
                     if save_metric:
                         metric_vals.append(metric_val)
 
+                    if save_metric_mean:
+                        metric_mean_val = (metric_mean_val * (num_batches - 1) + metric_val) / num_batches
+                        metric_mean_vals.append(metric_mean_val)
+
                     if terminate_early:
                         if stop_fn(metric_val):
                             is_break = True
 
-    return loss_vals, metric_vals, terminating_epoch
+    return {
+        'loss_vals': loss_vals,
+        'metric_vals': metric_vals,
+        'metric_mean_vals': metric_mean_vals,
+        'terminating_epoch': terminating_epoch,
+        'num_batches': num_batches
+    }
