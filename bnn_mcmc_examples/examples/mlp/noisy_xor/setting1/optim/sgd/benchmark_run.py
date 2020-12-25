@@ -1,6 +1,6 @@
 # %% Thoughts
 
-# Save solutions, metrics, runtimes and possibly losses
+# Save solutions, metrics (accuracies), runtimes and possibly losses
 
 # %% Import packages
 

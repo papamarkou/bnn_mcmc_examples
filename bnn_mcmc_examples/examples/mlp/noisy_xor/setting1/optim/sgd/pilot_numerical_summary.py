@@ -1,8 +1,23 @@
 # %% Import packages
 
+import numpy as np
+import torch
+
 from sklearn.metrics import accuracy_score
 
+from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.constants import dtype
+from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.model import model
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.optim.dataloaders import test_dataloader
+from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.optim.sgd.constants import optimizer_output_pilot_path
+
+# %% Load solution
+
+with open(optimizer_output_pilot_path.joinpath('solution.csv'), 'r') as file:
+    solution = np.loadtxt(file)
+
+# %% Set model parameters
+
+model.set_params(torch.tensor(solution, dtype=dtype))
 
 # %% Load test data and labels
 
