@@ -1,5 +1,6 @@
 numpy>=1.19.2
 pandas
+scikit-learn
 torch>=1.6.0
 eeyore>=0.0.16
 kanga>=0.0.17
