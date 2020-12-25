@@ -4,7 +4,7 @@ from datetime import timedelta
 from timeit import default_timer as timer
 
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting3.constants import (
-    num_mcmc_burnin_epochs, num_mcmc_epochs, verbose, mcmc_verbose_step
+    num_burnin_epochs, num_epochs, verbose, verbose_step
 )
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting3.metropolis_hastings.constants import sampler_output_pilot_path
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting3.metropolis_hastings.sampler import sampler
@@ -13,9 +13,7 @@ from bnn_mcmc_examples.examples.mlp.noisy_xor.setting3.metropolis_hastings.sampl
 
 start_time = timer()
 
-sampler.run(
-    num_epochs=num_mcmc_epochs, num_burnin_epochs=num_mcmc_burnin_epochs, verbose=verbose, verbose_step=mcmc_verbose_step
-)
+sampler.run(num_epochs=num_epochs, num_burnin_epochs=num_burnin_epochs, verbose=verbose, verbose_step=verbose_step)
 
 end_time = timer()
 print("Time taken: {}".format(timedelta(seconds=end_time-start_time)))
