@@ -1,3 +1,5 @@
+import numpy as np
+
 from datetime import timedelta
 from pathlib import Path
 from timeit import default_timer as timer
@@ -82,7 +84,7 @@ def benchmark(
 
             if accept:
                 with open(Path(path).joinpath('solutions.csv'), 'a') as file:
-                    file.write("{}\n".format(model.get_params().cpu().detach().numpy()))
+                    np.savetxt(file, model.get_params().cpu().detach().numpy()[np.newaxis], delimiter=',')
 
                 with open(Path(path).joinpath('runtimes.txt'), 'a') as file:
                     file.write("{}\n".format(runtime))
