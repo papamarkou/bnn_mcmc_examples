@@ -67,8 +67,8 @@ def benchmark(
                 save_loss=False,
                 save_metric=False,
                 save_metric_mean=False,
-                pred_fn=None,
-                metric_fn=None
+                pred_fn=pred_fn,
+                metric_fn=metric_fn
             )
             end_time = timer()
             runtime = end_time - start_time

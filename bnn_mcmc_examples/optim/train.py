@@ -14,7 +14,9 @@ def train(
     if loss_fn is None:
         loss_fn = model.loss
 
-    if (save_loss or save_metric or save_metric_mean) and (monitor_step is None):
+    save_summary = save_loss or save_metric or save_metric_mean
+
+    if save_summary and (monitor_step is None):
         monitor_step = len(dataloader)
 
     loss_vals = []
@@ -36,7 +38,7 @@ def train(
 
             loss_val, output = optimizer.step(closure)
 
-            if ((batch_idx == 0) or ((batch_idx + 1) % monitor_step == 0)):
+            if save_summary and ((batch_idx == 0) or ((batch_idx + 1) % monitor_step == 0)):
                 if save_loss:
                     loss_vals.append(loss_val.item())
 
