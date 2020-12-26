@@ -26,10 +26,14 @@ def benchmark(
     validation_loader=None,
     pred_fn=None,
     metric_fn=None,
+    check_fn=None,
     verbose=False,
     verbose_step=100,
     print_runtime=True
 ):
+    if (validation_loader is not None):
+        validation_output, validation_target = next(iter(validation_loader))
+
     if verbose:
         verbose_msg = set_verbose_benchmark_msg(num_solutions)
 
@@ -41,17 +45,17 @@ def benchmark(
 
         output_filenames = ['solutions.csv', 'runtimes.txt']
         if validation_loader is not None:
-            output_filenames.append('metric.txt')
+            output_filenames.append('metric_vals.txt')
 
         for filename in output_filenames:
-            path.joinpath(filename).unlink(missing_ok=True)
-            path.joinpath(filename).touch()
+            Path(path).joinpath(filename).unlink(missing_ok=True)
+            Path(path).joinpath(filename).touch()
 
         try:
             model.set_params(model.prior.sample())
 
             start_time = timer()
-            soluiton = train(
+            train(
                 model,
                 training_loader,
                 optimizer,
@@ -67,11 +71,22 @@ def benchmark(
             end_time = timer()
             runtime = end_time - start_time
 
-            if ((check_conditions is None) or check_conditions(self.get_chain(), runtime)):
-                self.get_chain().to_chainfile(path=run_path, mode='w')
+            if (validation_loader is not None):
+                metric_val = metric_fn(pred_fn(validation_output), validation_target)
+                accept = True if check_fn(metric_val) else False
+            else:
+                accept = True
 
-                with open(run_path.joinpath('runtime.txt'), 'w') as file:
+            if accept:
+                with open(Path(path).joinpath('solutions.csv'), 'a') as file:
+                    file.write("{}\n".format(model.get_params().cpu().detach().numpy()))
+
+                with open(Path(path).joinpath('runtime.txt'), 'a') as file:
                     file.write("{}\n".format(runtime))
+
+                if (validation_loader is not None):
+                    with open(Path(path).joinpath('metric_vals.txt'), 'a') as file:
+                        file.write("{}\n".format(metric_val))
 
                 i = i + 1
 
@@ -81,16 +96,14 @@ def benchmark(
                 j = j + 1
 
                 if verbose:
-                    print('Failed due to not meeting conditions', end='')
+                    print('Failed due to not meeting quality metric', end='')
 
             if verbose:
-                if print_acceptance:
-                    print('; acceptance rate = {}'.format(self.get_chain().acceptance_rate()), end='')
                 if print_runtime:
                     print('; runtime = {}'.format(timedelta(seconds=runtime)), end='')
                 print('\n')
         except RuntimeError as error:
-            with open(run_path.joinpath('errors', 'error'+str(k+1).zfill(num_chains)), 'w') as file:
+            with open(Path(path).joinpath('errors', 'error'+str(k+1).zfill(num_solutions)), 'w') as file:
                 file.write("{}\n".format(error))
 
             k = k + 1
