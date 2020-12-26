@@ -31,6 +31,16 @@ def benchmark(
     verbose_step=100,
     print_runtime=True
 ):
+    output_filenames = ['solutions.csv', 'runtimes.txt']
+    if validation_loader is not None:
+        output_filenames.append('metric_vals.txt')
+
+    for filename in output_filenames:
+        file = Path(path).joinpath(filename)
+        if file.is_file():
+            file.unlink()
+        file.touch()
+
     if (validation_loader is not None):
         validation_input, validation_target = next(iter(validation_loader))
 
@@ -42,16 +52,6 @@ def benchmark(
     while i < num_solutions:
         if verbose:
             print(verbose_msg.format(i+1, j, k))
-
-        output_filenames = ['solutions.csv', 'runtimes.txt']
-        if validation_loader is not None:
-            output_filenames.append('metric_vals.txt')
-
-        for filename in output_filenames:
-            file = Path(path).joinpath(filename)
-            if file.is_file():
-                file.unlink()
-            file.touch()
 
         try:
             model.set_params(model.prior.sample())
@@ -84,7 +84,7 @@ def benchmark(
                 with open(Path(path).joinpath('solutions.csv'), 'a') as file:
                     file.write("{}\n".format(model.get_params().cpu().detach().numpy()))
 
-                with open(Path(path).joinpath('runtime.txt'), 'a') as file:
+                with open(Path(path).joinpath('runtimes.txt'), 'a') as file:
                     file.write("{}\n".format(runtime))
 
                 if (validation_loader is not None):
