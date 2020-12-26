@@ -32,7 +32,7 @@ def benchmark(
     print_runtime=True
 ):
     if (validation_loader is not None):
-        validation_output, validation_target = next(iter(validation_loader))
+        validation_input, validation_target = next(iter(validation_loader))
 
     if verbose:
         verbose_msg = set_verbose_benchmark_msg(num_solutions)
@@ -74,6 +74,7 @@ def benchmark(
             runtime = end_time - start_time
 
             if (validation_loader is not None):
+                validation_output = model(validation_input)
                 metric_val = metric_fn(pred_fn(validation_output), validation_target)
                 accept = True if check_fn(metric_val) else False
             else:
