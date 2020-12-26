@@ -35,10 +35,8 @@ summary = train(
     save_loss=True,
     save_metric=True,
     save_metric_mean=True,
-    terminate_early=False,
     pred_fn=lambda labels: labels.squeeze() > 0.5,
-    metric_fn=lambda preds, labels: accuracy_score(preds, labels.squeeze()),
-    stop_fn=lambda metric_val: metric_val >= 0.9
+    metric_fn=lambda preds, labels: accuracy_score(preds, labels.squeeze())
 )
 
 # %% Save solution
