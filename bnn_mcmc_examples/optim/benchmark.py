@@ -4,7 +4,7 @@ from timeit import default_timer as timer
 
 from .train import train
 
-def set_verbose_benchmark_msg(self, num_solutions):
+def set_verbose_benchmark_msg(num_solutions):
     return 'Simulating solution {:' \
         + str(len(str(num_solutions))) \
         + '} out of ' \
@@ -48,8 +48,10 @@ def benchmark(
             output_filenames.append('metric_vals.txt')
 
         for filename in output_filenames:
-            Path(path).joinpath(filename).unlink(missing_ok=True)
-            Path(path).joinpath(filename).touch()
+            file = Path(path).joinpath(filename)
+            if file.is_file():
+                file.unlink()
+            file.touch()
 
         try:
             model.set_params(model.prior.sample())
