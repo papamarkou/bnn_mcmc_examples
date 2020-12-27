@@ -3,14 +3,14 @@
 from sklearn.metrics import accuracy_score
 from torch.optim import SGD
 
-from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.model import model
-from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.optim.constants import (
+from bnn_mcmc_examples.examples.mlp.noisy_xor.setting2.model import model
+from bnn_mcmc_examples.examples.mlp.noisy_xor.setting2.optim.constants import (
     num_epochs, num_solutions, verbose, verbose_step
 )
-from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.optim.dataloaders import training_dataloader, test_dataloader
-from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.optim.sgd.constants import optimizer_output_benchmark_path
-from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.optim.sgd.optimizer import lr, momentum
-# from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.optim.sgd.optimizer import loss_fn, lr, momentum
+from bnn_mcmc_examples.examples.mlp.noisy_xor.setting2.optim.dataloaders import training_dataloader, test_dataloader
+from bnn_mcmc_examples.examples.mlp.noisy_xor.setting2.optim.sgd.constants import optimizer_output_benchmark_path
+from bnn_mcmc_examples.examples.mlp.noisy_xor.setting2.optim.sgd.optimizer import lr, momentum
+# from bnn_mcmc_examples.examples.mlp.noisy_xor.setting2.optim.sgd.optimizer import loss_fn, lr, momentum
 from bnn_mcmc_examples.optim import benchmark
 
 # %% Create output directory if it does not exist

@@ -38,7 +38,7 @@ def train(
 
             loss_val, output = optimizer.step(closure)
 
-            if save_summary and ((batch_idx == 0) or ((batch_idx + 1) % monitor_step == 0)):
+            if save_summary and ((batch_idx + 1) % monitor_step == 0):
                 if save_loss:
                     loss_vals.append(loss_val.item())
 
