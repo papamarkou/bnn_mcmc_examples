@@ -19,6 +19,7 @@ num_chains = 4
 num_epochs = 1100
 num_burnin_epochs = 0
 batch_size = 50
+shuffle = True
 
 verbose = True
 verbose_step = 1000
