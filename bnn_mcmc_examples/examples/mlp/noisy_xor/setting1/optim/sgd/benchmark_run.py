@@ -36,7 +36,7 @@ benchmark(
     validation_loader=test_dataloader,
     pred_fn=lambda labels: labels.squeeze() > 0.5,
     metric_fn=lambda preds, labels: accuracy_score(preds, labels.squeeze()),
-    check_fn=lambda acc: acc > 0.6,
+    check_fn=lambda acc: acc > 0.85,
     verbose=verbose,
     verbose_step=verbose_step,
     print_runtime=True

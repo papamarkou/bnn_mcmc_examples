@@ -8,7 +8,5 @@
 
 # %% Setup optimizer hyper-parameters
 
-lr = 0.001
+lr = 0.002
 momentum = 0.0
-# lr = 0.002
-# momentum = 0.0

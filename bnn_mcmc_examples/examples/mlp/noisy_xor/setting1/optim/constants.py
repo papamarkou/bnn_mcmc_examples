@@ -1,8 +1,8 @@
 # %% Define constants
 
-num_solutions = 2 # 10000
+num_solutions = 1000
 
-num_epochs = 1000 # 5000
+num_epochs = 2000
 batch_size = 50
 shuffle = True
 
