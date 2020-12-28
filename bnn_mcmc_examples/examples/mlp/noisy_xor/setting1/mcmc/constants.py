@@ -1,6 +1,6 @@
 # %% Define constants
 
-num_chains = 4
+num_chains = 10
 
 num_epochs = 110000
 num_burnin_epochs = 0
