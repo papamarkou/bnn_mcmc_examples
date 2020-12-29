@@ -8,7 +8,9 @@ bnn_mcmc_examples/examples/mlp/exact_xor/__pycache__
 bnn_mcmc_examples/examples/mlp/exact_xor/metropolis_hastings/__pycache__
 bnn_mcmc_examples/examples/mlp/noisy_xor/setting1/__pycache__
 bnn_mcmc_examples/examples/mlp/noisy_xor/setting1/mcmc/__pycache__
+bnn_mcmc_examples/examples/mlp/noisy_xor/setting1/mcmc/hmc/__pycache__
 bnn_mcmc_examples/examples/mlp/noisy_xor/setting1/mcmc/metropolis_hastings/__pycache__
+bnn_mcmc_examples/examples/mlp/noisy_xor/setting1/mcmc/power_posteriors/__pycache__
 bnn_mcmc_examples/examples/mlp/noisy_xor/setting1/optim/__pycache__
 bnn_mcmc_examples/examples/mlp/noisy_xor/setting1/optim/sgd/__pycache__
 bnn_mcmc_examples/examples/mlp/noisy_xor/setting2/__pycache__
