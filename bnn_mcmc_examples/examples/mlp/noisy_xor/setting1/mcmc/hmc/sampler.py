@@ -7,4 +7,4 @@ from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.model import model
 
 # %% Setup HMC sampler
 
-sampler = HMC(model, theta0=model.prior.sample(), dataloader=training_dataloader, step=0.1, num_steps=10)
+sampler = HMC(model, theta0=model.prior.sample(), dataloader=training_dataloader, step=0.11, num_steps=10)
