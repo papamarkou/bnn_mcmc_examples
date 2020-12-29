@@ -14,7 +14,7 @@ mlp_dims = [num_features, 2, 1]
 
 dtype = torch.float32
 
-num_chains = 10
+num_chains = 8
 
 num_epochs = 1100
 num_burnin_epochs = 0
