@@ -37,7 +37,7 @@ accuracies = np.empty(chain_lists.num_chains())
 
 for i in range(chain_lists.num_chains()):
     # Initialize model parameters
-    model.set_params(means[i, :])
+    model.set_params(means[i, :].clone().detach())
 
     # Compute test logits
     test_logits = model(test_data)
