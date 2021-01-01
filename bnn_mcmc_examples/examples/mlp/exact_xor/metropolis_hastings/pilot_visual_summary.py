@@ -4,6 +4,7 @@ import kanga.plots as ps
 
 from kanga.chains import ChainArray
 
+from bnn_mcmc_examples.examples.mlp.exact_xor.constants import diagnostic_iter_thres
 from bnn_mcmc_examples.examples.mlp.exact_xor.metropolis_hastings.constants import sampler_output_pilot_path
 from bnn_mcmc_examples.examples.mlp.exact_xor.model import model
 
@@ -11,11 +12,10 @@ from bnn_mcmc_examples.examples.mlp.exact_xor.model import model
 
 chain_array = ChainArray.from_file(keys=['sample', 'accepted'], path=sampler_output_pilot_path)
 
-# %% Get the first 10000 iterations
+# %% Drop burn-in samples
 
-# n = 10000
-# chain_array.vals['sample'] = chain_array.vals['sample'][:n, ]
-# chain_array.vals['accepted'] = chain_array.vals['accepted'][:n]
+chain_array.vals['sample'] = chain_array.vals['sample'][diagnostic_iter_thres:, :]
+chain_array.vals['accepted'] = chain_array.vals['accepted'][diagnostic_iter_thres:]
 
 # %% Plot traces of simulated chain
 
