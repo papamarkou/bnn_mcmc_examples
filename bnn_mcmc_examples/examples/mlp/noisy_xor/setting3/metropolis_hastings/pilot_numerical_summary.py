@@ -2,11 +2,17 @@
 
 from kanga.chains import ChainArray
 
+from bnn_mcmc_examples.examples.mlp.noisy_xor.setting3.mcmc.constants import diagnostic_iter_thres
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting3.metropolis_hastings.constants import sampler_output_pilot_path
 
 # %% Load chain array
 
 chain_array = ChainArray.from_file(keys=['sample', 'accepted'], path=sampler_output_pilot_path)
+
+# %% Drop burn-in samples
+
+chain_array.vals['sample'] = chain_array.vals['sample'][diagnostic_iter_thres:, :]
+chain_array.vals['accepted'] = chain_array.vals['accepted'][diagnostic_iter_thres:]
 
 # %% Compute acceptance rate
 

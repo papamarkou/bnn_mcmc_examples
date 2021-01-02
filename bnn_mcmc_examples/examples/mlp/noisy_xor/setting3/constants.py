@@ -18,6 +18,7 @@ num_chains = 8
 
 num_epochs = 1100
 num_burnin_epochs = 0
+diagnostic_iter_thres = 10000
 batch_size = 50
 shuffle = True
 
