@@ -4,7 +4,7 @@ import numpy as np
 
 from kanga.chains import ChainArrays
 
-from bnn_mcmc_examples.examples.mlp.noisy_xor.setting3.constants import num_chains
+from bnn_mcmc_examples.examples.mlp.noisy_xor.setting3.constants import diagnostic_iter_thres, num_chains
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting3.metropolis_hastings.constants import (
     sampler_output_path, sampler_output_run_paths
 )
@@ -23,6 +23,10 @@ for i in range(num_chains):
     with open(sampler_output_run_paths[i].joinpath('runtime.txt'), 'r') as file:
         runtimes.append(float(file.readline().rstrip()))
 runtimes = np.array(runtimes)
+
+# %% Drop burn-in samples
+
+chain_arrays.vals['sample'] = chain_arrays.vals['sample'][:, diagnostic_iter_thres:, :]
 
 # %% Compute multivariate rhat
 
