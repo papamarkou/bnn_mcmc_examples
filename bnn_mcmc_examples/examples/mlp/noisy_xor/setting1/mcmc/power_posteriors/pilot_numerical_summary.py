@@ -12,7 +12,6 @@ chain_array = ChainArray.from_file(keys=['sample'], path=sampler_output_pilot_pa
 # %% Drop burn-in samples
 
 chain_array.vals['sample'] = chain_array.vals['sample'][diagnostic_iter_thres:, :]
-chain_array.vals['accepted'] = chain_array.vals['accepted'][diagnostic_iter_thres:]
 
 # %% Compute Monte Carlo mean
 

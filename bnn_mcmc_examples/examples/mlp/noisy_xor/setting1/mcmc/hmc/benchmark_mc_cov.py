@@ -4,7 +4,7 @@ import numpy as np
 
 from kanga.chains import ChainArrays
 
-from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.constants import num_chains
+from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.constants import diagnostic_iter_thres, num_chains
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.hmc.constants import (
     sampler_output_path, sampler_output_run_paths
 )
@@ -12,6 +12,10 @@ from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.hmc.constants import
 # %% Load chain arrays
 
 chain_arrays = ChainArrays.from_file(sampler_output_run_paths, keys=['sample'])
+
+# %% Drop burn-in samples
+
+chain_arrays.vals['sample'] = chain_arrays.vals['sample'][:, diagnostic_iter_thres:, :]
 
 # %% Compute Monte Carlo covariance matrices
 
