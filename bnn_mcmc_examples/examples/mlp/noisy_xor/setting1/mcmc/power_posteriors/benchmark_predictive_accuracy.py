@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score
 from eeyore.chains import ChainLists
 
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.constants import dtype
-from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.constants import diagnostic_iter_thres
+from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.constants import diagnostic_iter_thres, num_chains
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.power_posteriors.constants import (
     sampler_output_path, sampler_output_run_paths
 )
@@ -20,7 +20,7 @@ chain_lists = ChainLists.from_file(sampler_output_run_paths, keys=['sample'], dt
 
 # %% Drop burn-in samples
 
-for i in range(chain_lists.num_chains()):
+for i in range(num_chains):
     chain_lists.vals['sample'][i] = chain_lists.vals['sample'][i][diagnostic_iter_thres:]
 
 # %% Load test data and labels
@@ -33,9 +33,9 @@ means = chain_lists.mean()
 
 # %% Compute predictive accuracies
 
-accuracies = np.empty(chain_lists.num_chains())
+accuracies = np.empty(num_chains)
 
-for i in range(chain_lists.num_chains()):
+for i in range(num_chains):
     # Initialize model parameters
     model.set_params(means[i, :].clone().detach())
 
