@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 
-# import kanga.plots as ps
 from kanga.plots import redblue_cmap
 
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.constants import pred_interval_x1, pred_interval_x2
@@ -20,29 +19,29 @@ for i in range(len(pred_interval_x1)):
         else:
             pred_interval_y[i, j] = 1 if (pred_interval_x2[j] < 0.5) else 0
 
-print(pred_interval_y)
-
 # %%
 
-# fig, (ax, cbar_ax) = plt.subplots(2, figsize=[7, 7], gridspec_kw=None)
+xticks = np.linspace(0, len(pred_interval_x1)-1, num=6, dtype=np.int)
+xticklabels = [np.round(pred_interval_x1[idx], decimals=2) for idx in xticks]
 
-sns.heatmap(
+yticks = np.linspace(0, len(pred_interval_x2)-1, num=6, dtype=np.int)
+yticklabels = [np.round(pred_interval_x2[idx], decimals=2) for idx in yticks]
+
+ax = sns.heatmap(
     pred_interval_y,
     cmap=redblue_cmap,
-    # linewidths=0.01,
-    # linecolor='white',
+    linewidths=0.01,
+    linecolor='white',
     cbar=True,
-    cbar_kws=None,
-    # cbar_ax=cbar_ax,
-    square=True,
-    # xticklabels=pred_interval_x1,
-    # yticklabels=yticklabels,
-    mask=None
+    square=True
 )
-#    , gridspec_kw=None, vmin=-1, vmax=1, cmap=redblue_cmap, linewidths=0.01,
-#    linecolor='white', cbar=True, cbar_kws=None, square=True, xticklabels=None, yticklabels=None, mask=None, upper=True,
-#    xtick_labelsize=8, ytick_rotation=0, ytick_labelsize=8, cbar_labelsize=8, fname=None, quality=100, transparent=True,
-#    bbox_inches='tight', pad_inches=0.1
-# )
 
-plt.ylim(0, 10)
+plt.ylim(0, len(pred_interval_x2))
+
+ax.set_xticks(xticks+0.5)
+ax.set_xticklabels(xticklabels, fontsize=8)
+
+ax.set_yticks(yticks+0.5)
+ax.set_yticklabels(yticklabels, rotation=0, fontsize=8)
+
+ax.collections[0].colorbar.ax.tick_params(labelsize=8)
