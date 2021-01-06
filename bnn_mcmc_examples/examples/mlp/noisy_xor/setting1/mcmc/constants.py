@@ -13,8 +13,17 @@ diagnostic_iter_thres = 10000
 verbose = True
 verbose_step = 1000
 
-ground_truth_x_l = -0.5
-ground_truth_x_u = 1.5
-ground_truth_num = 10
-ground_truth_x1 = np.linspace(ground_truth_x_l, ground_truth_x_u, num=ground_truth_num)
-ground_truth_x2 = np.linspace(ground_truth_x_l, ground_truth_x_u, num=ground_truth_num)
+pred_interval_x_l = -0.5
+pred_interval_x_u = 1.5
+pred_interval_num = 10
+pred_interval_step = (pred_interval_x_u - pred_interval_x_l) / pred_interval_num
+pred_interval_x1 = np.linspace(
+    pred_interval_x_l + 0.5 * pred_interval_step,
+    pred_interval_x_u - 0.5 * pred_interval_step,
+    num=pred_interval_num
+)
+pred_interval_x2 = np.linspace(
+    pred_interval_x_l + 0.5 * pred_interval_step,
+    pred_interval_x_u - 0.5 * pred_interval_step,
+    num=pred_interval_num
+)
