@@ -11,7 +11,6 @@ from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.metropolis_hastings.
 
 # %% Load predictive posteriors
 
-num_chains = 2
 pred_posterior_yhat = []
 for i in range(num_chains):
     pred_posterior_yhat.append(
@@ -22,7 +21,7 @@ pred_posterior_yhat = np.stack(pred_posterior_yhat)
 # %% Plot heat maps of predictive posteriors
 
 for i in range(num_chains):
-    num_ticks = 4
+    num_ticks = 8
 
     xticks = np.linspace(0, len(pred_interval_x1)-1, num=num_ticks, dtype=np.int)
     xticklabels = [np.round(pred_interval_x1[idx], decimals=2) for idx in xticks]
@@ -56,3 +55,5 @@ for i in range(num_chains):
         bbox_inches='tight',
         pad_inches=0.1
     )
+
+    plt.close()
