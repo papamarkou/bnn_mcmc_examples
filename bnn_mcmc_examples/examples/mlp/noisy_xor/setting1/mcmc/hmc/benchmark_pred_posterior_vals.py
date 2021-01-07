@@ -28,7 +28,6 @@ pred_posterior_yhat = np.empty([num_chains, len(pred_interval_x1), len(pred_inte
 for k in range(num_chains):
     for i in range(len(pred_interval_x1)):
         for j in range(len(pred_interval_x2)):
-            print(k, i, j)
             pred_posterior_yhat[k, i, j] = model.predictive_posterior(
                 chain_lists.vals['sample'][k],
                 torch.tensor([pred_interval_x1[i], pred_interval_x2[j]], dtype=dtype),
