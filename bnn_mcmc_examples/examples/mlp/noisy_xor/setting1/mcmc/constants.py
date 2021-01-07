@@ -15,7 +15,7 @@ verbose_step = 1000
 
 pred_interval_x_l = -0.5
 pred_interval_x_u = 1.5
-pred_interval_num = 11
+pred_interval_num = 22
 pred_interval_step = (pred_interval_x_u - pred_interval_x_l) / pred_interval_num
 pred_interval_x1 = np.linspace(
     pred_interval_x_l + 0.5 * pred_interval_step,
