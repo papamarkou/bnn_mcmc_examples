@@ -5,7 +5,7 @@ import numpy as np
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.constants import output_path
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.constants import pred_interval_x1, pred_interval_x2
 
-# %% Generate ground truch
+# %% Generate ground truth
 
 pred_interval_y = np.empty([len(pred_interval_x1), len(pred_interval_x2)])
 
