@@ -11,7 +11,7 @@ from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.constants import pre
 
 # %% Load ground truth
 
-pred_interval_y = np.loadtxt(output_path.joinpath('ground_truth_vals.csv'), delimiter=',', skiprows=0)
+pred_interval_y = np.loadtxt(output_path.joinpath('ground_truth.csv'), delimiter=',', skiprows=0)
 
 # %% Plot heat map of ground truth
 
@@ -41,3 +41,11 @@ ax.set_yticks(yticks+0.5)
 ax.set_yticklabels(yticklabels, rotation=0, fontsize=8)
 
 ax.collections[0].colorbar.ax.tick_params(labelsize=8)
+
+plt.savefig(
+    output_path.joinpath('ground_truth.png'),
+    pil_kwargs={'quality': 100},
+    transparent=True,
+    bbox_inches='tight',
+    pad_inches=0.1
+)

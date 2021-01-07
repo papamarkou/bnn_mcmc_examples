@@ -18,4 +18,4 @@ for i in range(len(pred_interval_x1)):
 
 # %% Save ground truth
 
-np.savetxt(output_path.joinpath('ground_truth_vals.csv'), pred_interval_y, delimiter=',')
+np.savetxt(output_path.joinpath('ground_truth.csv'), pred_interval_y, delimiter=',')
