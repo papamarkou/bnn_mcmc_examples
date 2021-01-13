@@ -41,7 +41,7 @@ setup(
         'matplotlib>=3.3.3',
         'seaborn>=0.11.0'
     ],
-    package_data={'bnn_mcmc_examples': ['data/*/x.csv', 'data/*/y.csv', 'data/*/readme.md']},
+    package_data={'bnn_mcmc_examples': ['data/pima.csv', 'data/*/x.csv', 'data/*/y.csv', 'data/*/readme.md']},
     include_package_data=True,
     zip_safe=False
 )

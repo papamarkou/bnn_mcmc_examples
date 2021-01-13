@@ -87,4 +87,5 @@ print(table(reduced_dframe$diabetes))
 
 # Write reduced dataframe to CSV
 
-write.table(reduced_dframe, "pima.csv", quote=FALSE, sep=",", row.names=FALSE)
+write.table(reduced_dframe[c("glucose", "mass", "pedigree", "age")], "x.csv", quote=FALSE, sep=",", row.names=FALSE)
+write.table(reduced_dframe[c("diabetes")], "y.csv", quote=FALSE, sep=",", row.names=FALSE)
