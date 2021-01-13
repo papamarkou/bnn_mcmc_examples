@@ -6,11 +6,6 @@ library(mlbench)
 
 data(PimaIndiansDiabetes2)
 
-# Set the seed for splitting the data 
-
-# print("Setting the seed")
-# set.seed(100)
-
 # Dimensions of dataframe
 
 print(c("Dimensions of dataframe:"))
@@ -89,3 +84,7 @@ print(dim(reduced_dframe))
 
 print("Frequency of diabetes cases in reduced dataframe:")
 print(table(reduced_dframe$diabetes))
+
+# Write reduced dataframe to CSV
+
+write.table(reduced_dframe, "pima.csv", quote=FALSE, sep=",", row.names=FALSE)
