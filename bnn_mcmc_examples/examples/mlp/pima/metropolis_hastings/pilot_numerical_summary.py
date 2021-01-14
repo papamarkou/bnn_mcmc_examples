@@ -2,8 +2,8 @@
 
 from kanga.chains import ChainArray
 
-from bnn_mcmc_examples.examples.mlp.noisy_xor.setting3.constants import diagnostic_iter_thres
-from bnn_mcmc_examples.examples.mlp.noisy_xor.setting3.metropolis_hastings.constants import sampler_output_pilot_path
+from bnn_mcmc_examples.examples.mlp.pima.constants import diagnostic_iter_thres
+from bnn_mcmc_examples.examples.mlp.pima.metropolis_hastings.constants import sampler_output_pilot_path
 
 # %% Load chain array
 
