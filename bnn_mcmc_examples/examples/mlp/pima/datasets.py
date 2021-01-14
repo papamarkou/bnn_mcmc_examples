@@ -18,7 +18,7 @@ y = pd.read_csv(data_paths['pima'].joinpath('y.csv'))
 
 # %% Split data to training and test subsets
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=100, stratify=y)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=1000, stratify=y)
 
 # %% Create training dataset
 
@@ -27,9 +27,17 @@ training_dataset = XYDataset(
     torch.from_numpy(y_train.to_numpy(dtype=torch_to_np_types[dtype]))
 )
 
+training_dataset.x = \
+    (training_dataset.x - torch.mean(training_dataset.x, dim=0, keepdim=True))/ \
+    torch.std(training_dataset.x, dim=0, keepdim=True, unbiased=False)
+
 # %% Create test dataset
 
 test_dataset = XYDataset(
     torch.from_numpy(x_test.to_numpy(dtype=torch_to_np_types[dtype])),
     torch.from_numpy(y_test.to_numpy(dtype=torch_to_np_types[dtype]))
 )
+
+test_dataset.x = \
+    (test_dataset.x - torch.mean(test_dataset.x, dim=0, keepdim=True))/ \
+    torch.std(test_dataset.x, dim=0, keepdim=True, unbiased=False)
