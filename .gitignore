@@ -21,6 +21,7 @@ bnn_mcmc_examples/examples/mlp/noisy_xor/setting2/optim/sgd/__pycache__
 bnn_mcmc_examples/examples/mlp/noisy_xor/setting3/__pycache__
 bnn_mcmc_examples/examples/mlp/noisy_xor/setting3/metropolis_hastings/__pycache__
 bnn_mcmc_examples/examples/mlp/pima/__pycache__
+bnn_mcmc_examples/examples/mlp/pima/hmc/__pycache__
 bnn_mcmc_examples/examples/mlp/pima/metropolis_hastings/__pycache__
 bnn_mcmc_examples/optim/__pycache__
 bnn_mcmc_examples/stats/__pycache__

@@ -11,15 +11,22 @@ output_path = Path.home().joinpath('output', 'bnn_mcmc_examples', 'mlp', 'pima')
 
 num_features = 4
 
-mlp_dims = [num_features, 2, 1]
+mlp_dims = [num_features, 2, 1, 2, 1]
+mlp_bias = 4 * [True]
+mlp_activations = 4 * [torch.sigmoid]
+# mlp_dims = [num_features, 2, 1]
+# mlp_bias = 2 * [True]
+# mlp_activations = 2 * [torch.sigmoid]
 
 dtype = torch.float32
 
 num_chains = 2 # 10
 
-num_epochs = 11000 # 110000
+# num_epochs = 11000
+num_epochs = 110000
 num_burnin_epochs = 0
-diagnostic_iter_thres = 1000 # 10000
+# diagnostic_iter_thres = 1000
+diagnostic_iter_thres = 10000
 
 verbose = True
 verbose_step = 1000
@@ -40,4 +47,5 @@ pred_interval_x2 = np.linspace(
     num=pred_interval_num
 )
 
-pred_iter_thres = 1000 # 100000
+# pred_iter_thres = 10000
+pred_iter_thres = 100000

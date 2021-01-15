@@ -8,11 +8,11 @@ from torch.distributions import Normal
 from eeyore.constants import loss_functions
 from eeyore.models import mlp
 
-from bnn_mcmc_examples.examples.mlp.pima.constants import dtype, mlp_dims
+from bnn_mcmc_examples.examples.mlp.pima.constants import dtype, mlp_dims, mlp_bias, mlp_activations
 
 # %% Setup MLP model
 
-hparams = mlp.Hyperparameters(dims=mlp_dims)
+hparams = mlp.Hyperparameters(dims=mlp_dims, bias=mlp_bias, activations=mlp_activations)
 
 model = mlp.MLP(loss=loss_functions['binary_classification'], hparams=hparams, dtype=dtype)
 
