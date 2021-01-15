@@ -10,7 +10,7 @@ qsub \
   -cwd \
   -V \
   -l short \
-  -N mlp_noisy_xor_mh \
+  -N mlp_noisy_xor_hmc \
   -o $OUTPUTPATH \
   -e $OUTPUTPATH \
   $CONDABIN run -p $CONDAENV python benchmark_run.py
