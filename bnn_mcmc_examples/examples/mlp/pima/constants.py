@@ -16,11 +16,11 @@ mlp_activations = 3 * [torch.sigmoid]
 
 dtype = torch.float32
 
-num_chains = 1 # 10
+num_chains = 4
 
-num_epochs = 11000
+num_epochs = 550000
 num_burnin_epochs = 0
-diagnostic_iter_thres = 1000
+diagnostic_iter_thres = 500000
 
 verbose = True
 verbose_step = 1000
