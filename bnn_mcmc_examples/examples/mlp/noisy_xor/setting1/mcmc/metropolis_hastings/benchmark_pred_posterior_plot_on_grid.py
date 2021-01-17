@@ -14,7 +14,7 @@ from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.metropolis_hastings.
 pred_posterior_yhat = []
 for i in range(num_chains):
     pred_posterior_yhat.append(
-        np.loadtxt(sampler_output_run_paths[i].joinpath('pred_posterior_yhat.csv'), delimiter=',', skiprows=0)
+        np.loadtxt(sampler_output_run_paths[i].joinpath('pred_posterior_on_grid.csv'), delimiter=',', skiprows=0)
     )
 pred_posterior_yhat = np.stack(pred_posterior_yhat)
 
@@ -49,7 +49,7 @@ for i in range(num_chains):
     ax.collections[0].colorbar.ax.tick_params(labelsize=8)
 
     plt.savefig(
-        sampler_output_run_paths[i].joinpath('pred_posterior_yhat.png'),
+        sampler_output_run_paths[i].joinpath('pred_posterior_on_grid.png'),
         pil_kwargs={'quality': 100},
         transparent=True,
         bbox_inches='tight',

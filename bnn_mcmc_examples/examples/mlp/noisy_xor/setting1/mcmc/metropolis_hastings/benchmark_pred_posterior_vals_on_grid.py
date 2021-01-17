@@ -37,4 +37,4 @@ for k in range(num_chains):
 # %% Save predictive posteriors
 
 for i in range(num_chains):
-    np.savetxt(sampler_output_run_paths[i].joinpath('pred_posterior_yhat.csv'), pred_posterior_yhat[i], delimiter=',')
+    np.savetxt(sampler_output_run_paths[i].joinpath('pred_posterior_on_grid.csv'), pred_posterior_yhat[i], delimiter=',')

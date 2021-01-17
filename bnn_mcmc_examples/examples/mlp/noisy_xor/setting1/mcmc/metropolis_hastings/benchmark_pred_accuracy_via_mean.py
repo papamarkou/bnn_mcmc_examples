@@ -50,4 +50,4 @@ for i in range(num_chains):
 
 # %% Save predictive accuracies
 
-np.savetxt(sampler_output_path.joinpath('accuracies.txt'), accuracies)
+np.savetxt(sampler_output_path.joinpath('accuracies_via_mean.txt'), accuracies)
