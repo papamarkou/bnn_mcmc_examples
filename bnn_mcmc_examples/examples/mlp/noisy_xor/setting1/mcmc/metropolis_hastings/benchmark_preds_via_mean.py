@@ -42,4 +42,4 @@ for i in range(num_chains):
     test_preds = test_logits.squeeze() > 0.5
 
     # Save predictions
-    np.savetxt(sampler_output_run_paths[i].joinpath('preds_via_mean.csv'), test_preds, fmt='%d', delimiter=',')
+    np.savetxt(sampler_output_run_paths[i].joinpath('preds_via_mean.txt'), test_preds, fmt='%d', delimiter=',')
