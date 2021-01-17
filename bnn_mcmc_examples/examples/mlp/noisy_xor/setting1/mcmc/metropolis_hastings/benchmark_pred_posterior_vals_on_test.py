@@ -11,6 +11,7 @@ from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.constants import (
 )
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.metropolis_hastings.constants import sampler_output_run_paths
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.model import model
+from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.datascanners import test_dataloader
 
 # %% Load chain lists
 
@@ -23,12 +24,12 @@ for i in range(num_chains):
 
 # %% Generate ground truch
 
-pred_posterior = np.empty([num_chains, len(pred_interval_x1), len(pred_interval_x2)])
+pred_posterior_yhat = np.empty([num_chains, len(pred_interval_x1), len(pred_interval_x2)])
 
 for k in range(num_chains):
     for i in range(len(pred_interval_x1)):
         for j in range(len(pred_interval_x2)):
-            pred_posterior[k, i, j] = model.predictive_posterior(
+            pred_posterior_yhat[k, i, j] = model.predictive_posterior(
                 chain_lists.vals['sample'][k],
                 torch.tensor([pred_interval_x1[i], pred_interval_x2[j]], dtype=dtype),
                 torch.tensor([1.], dtype=dtype)
@@ -37,4 +38,4 @@ for k in range(num_chains):
 # %% Save predictive posteriors
 
 for i in range(num_chains):
-    np.savetxt(sampler_output_run_paths[i].joinpath('pred_posterior_on_grid.csv'), pred_posterior[i], delimiter=',')
+    np.savetxt(sampler_output_run_paths[i].joinpath('pred_posterior_on_grid.csv'), pred_posterior_yhat[i], delimiter=',')
