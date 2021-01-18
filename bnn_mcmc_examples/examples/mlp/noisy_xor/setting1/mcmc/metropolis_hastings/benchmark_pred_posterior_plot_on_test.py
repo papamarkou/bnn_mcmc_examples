@@ -51,13 +51,21 @@ for i in range(num_chains):
     plt.rcParams['ytick.labelsize'] = 12
     plt.rcParams['legend.fontsize'] = 12
 
-    plt.bar(
-        range(len(test_labels)),
-        np.hstack([test_logit_dict[0], test_logit_dict[1]]),
-        width=0.7,
+    plt.vlines(
+        x=range(len(test_labels)),
+        ymin=0,
+        ymax=np.hstack([test_logit_dict[0], test_logit_dict[1]]),
         color=bar_colors,
-        align='edge'
+        linewidth=2
     )
+
+    #plt.bar(
+    #    range(len(test_labels)),
+    #    np.hstack([test_logit_dict[0], test_logit_dict[1]]),
+    #    width=0.7,
+    #    color=bar_colors,
+    #    align='edge'
+    #)
 
     plt.legend(handles=legend_patches, loc='upper left', ncol=1)
 
