@@ -15,7 +15,9 @@ test_data, test_labels = next(iter(test_dataloader))
 
 # %% Plot predictive posteriors
 
-pred_colors = {'correct': 'green', 'wrong': 'red'}
+pred_colors = {'correct': '#bcbd22', 'wrong': '#d62728'}
+# '#bcbd22': rio grande, similar to yellow green
+# ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"]
 
 patch_list = []
 for key in pred_colors:
@@ -57,7 +59,7 @@ for i in range(num_chains):
         align='edge'
     )
 
-    plt.legend(handles=legend_patches, loc='upper right', ncol=1)
+    plt.legend(handles=legend_patches, loc='upper left', ncol=1)
 
     plt.axhline(y=0.5, xmin=0, xmax=len(test_labels), color='black', linestyle='dashed', linewidth=1.5)
 
