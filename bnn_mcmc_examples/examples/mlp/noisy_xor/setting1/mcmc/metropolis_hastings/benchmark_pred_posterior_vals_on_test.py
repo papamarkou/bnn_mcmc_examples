@@ -7,9 +7,9 @@ from eeyore.chains import ChainLists
 
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.constants import dtype
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.constants import num_chains, pred_iter_thres
+from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.datascanners import test_dataloader
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.metropolis_hastings.constants import sampler_output_run_paths
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.model import model
-from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.datascanners import test_dataloader
 
 # %% Load chain lists
 
