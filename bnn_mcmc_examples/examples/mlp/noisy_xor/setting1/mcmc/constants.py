@@ -29,4 +29,4 @@ pred_interval_x2 = np.linspace(
     num=pred_interval_num
 )
 
-pred_iter_thres = 100000
+pred_iter_thres = 109000 # 100000

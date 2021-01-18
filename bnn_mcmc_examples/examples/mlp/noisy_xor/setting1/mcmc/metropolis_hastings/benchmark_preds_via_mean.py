@@ -29,8 +29,6 @@ means = chain_lists.mean()
 
 # %% Make and save predictions
 
-accuracies = np.empty(num_chains)
-
 for i in range(num_chains):
     # Initialize model parameters
     model.set_params(means[i, :].clone().detach())

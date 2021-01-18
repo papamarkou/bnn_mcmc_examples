@@ -1,6 +1,7 @@
 # %% Load packages
 
 import numpy as np
+import torch
 
 from eeyore.chains import ChainLists
 
@@ -34,9 +35,11 @@ verbose_msg = 'Evaluating predictive posterior based on chain {:' \
     + '...'
 
 for k in range(num_chains):
-    for i, (x, y) in enumerate(test_dataloader):
+    for i, (x, _) in enumerate(test_dataloader):
         print(verbose_msg.format(k+1, i+1))
 
-        pred_posterior[k, i] = model.predictive_posterior(chain_lists.vals['sample'][k], x.squeeze(), y.squeeze(-1))
+        pred_posterior[k, i] = model.predictive_posterior(
+            chain_lists.vals['sample'][k], x.squeeze(), torch.tensor([1.], dtype=dtype)
+        )
 
-    np.savetxt(sampler_output_run_paths[k].joinpath('pred_posterior_on_test.csv'), pred_posterior[k], delimiter=',')
+    np.savetxt(sampler_output_run_paths[k].joinpath('pred_posterior_on_test.txt'), pred_posterior[k], delimiter=',')
