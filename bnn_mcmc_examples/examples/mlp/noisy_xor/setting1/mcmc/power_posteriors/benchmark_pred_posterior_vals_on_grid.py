@@ -21,20 +21,33 @@ chain_lists = ChainLists.from_file(sampler_output_run_paths, keys=['sample'], dt
 for i in range(num_chains):
     chain_lists.vals['sample'][i] = chain_lists.vals['sample'][i][pred_iter_thres:]
 
-# %% Generate ground truch
+# %% Compute and save predictive posteriors
 
-pred_posterior_yhat = np.empty([num_chains, len(pred_interval_x1), len(pred_interval_x2)])
+pred_posterior = np.empty([num_chains, len(pred_interval_x1), len(pred_interval_x2)])
+
+verbose_msg = 'Evaluating predictive posterior based on chain {:' \
+    + str(len(str(num_chains))) \
+    + '} out of ' \
+    + str(num_chains) \
+    + ' at grid point ({:' \
+    + str(len(str(len(pred_interval_x1)))) \
+    + '}, {:' \
+    + str(len(str(len(pred_interval_x2)))) \
+    + '}) out of (' \
+    + str(len(pred_interval_x1)) \
+    + ', ' \
+    + str(len(pred_interval_x2)) \
+    + ')...'
 
 for k in range(num_chains):
     for i in range(len(pred_interval_x1)):
         for j in range(len(pred_interval_x2)):
-            pred_posterior_yhat[k, i, j] = model.predictive_posterior(
+            print(verbose_msg.format(k+1, i+1, j+1))
+
+            pred_posterior[k, i, j] = model.predictive_posterior(
                 chain_lists.vals['sample'][k],
                 torch.tensor([pred_interval_x1[i], pred_interval_x2[j]], dtype=dtype),
                 torch.tensor([1.], dtype=dtype)
             )
 
-# %% Save predictive posteriors
-
-for i in range(num_chains):
-    np.savetxt(sampler_output_run_paths[i].joinpath('pred_posterior_yhat.csv'), pred_posterior_yhat[i], delimiter=',')
+    np.savetxt(sampler_output_run_paths[k].joinpath('pred_posterior_on_grid.csv'), pred_posterior[k], delimiter=',')
