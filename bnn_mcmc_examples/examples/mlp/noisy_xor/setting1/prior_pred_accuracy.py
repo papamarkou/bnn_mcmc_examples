@@ -10,6 +10,10 @@ from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.constants import num
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.model import model
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.optim.dataloaders import test_dataloader
 
+# %% Create output directory if it does not exist
+
+output_path.mkdir(parents=True, exist_ok=True)
+
 # %% Load test data and labels
 
 test_data, test_labels = next(iter(test_dataloader))

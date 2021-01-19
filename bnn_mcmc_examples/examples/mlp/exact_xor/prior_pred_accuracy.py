@@ -9,6 +9,10 @@ from bnn_mcmc_examples.examples.mlp.exact_xor.constants import num_chains, outpu
 from bnn_mcmc_examples.examples.mlp.exact_xor.dataloader import dataloader
 from bnn_mcmc_examples.examples.mlp.exact_xor.model import model
 
+# %% Create output directory if it does not exist
+
+output_path.mkdir(parents=True, exist_ok=True)
+
 # %% Load test data and labels
 
 test_data, test_labels = next(iter(dataloader))
