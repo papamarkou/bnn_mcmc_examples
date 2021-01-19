@@ -2,8 +2,8 @@
 
 import numpy as np
 
-from bnn_mcmc_examples.examples.mlp.pima.constants import num_chains
-from bnn_mcmc_examples.examples.mlp.pima.metropolis_hastings.constants import sampler_output_run_paths
+from bnn_mcmc_examples.examples.mlp.pima.setting2.constants import num_chains
+from bnn_mcmc_examples.examples.mlp.pima.setting2.metropolis_hastings.constants import sampler_output_run_paths
 
 # %% Make and save predictions
 

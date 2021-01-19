@@ -4,10 +4,10 @@ import numpy as np
 
 from eeyore.chains import ChainLists
 
-from bnn_mcmc_examples.examples.mlp.pima.constants import diagnostic_iter_thres, dtype, num_chains
-from bnn_mcmc_examples.examples.mlp.pima.dataloaders import test_dataloader
-from bnn_mcmc_examples.examples.mlp.pima.metropolis_hastings.constants import sampler_output_run_paths
-from bnn_mcmc_examples.examples.mlp.pima.model import model
+from bnn_mcmc_examples.examples.mlp.pima.setting2.constants import diagnostic_iter_thres, dtype, num_chains
+from bnn_mcmc_examples.examples.mlp.pima.setting2.dataloaders import test_dataloader
+from bnn_mcmc_examples.examples.mlp.pima.setting2.metropolis_hastings.constants import sampler_output_run_paths
+from bnn_mcmc_examples.examples.mlp.pima.setting2.model import model
 
 # %% Load chain lists
 

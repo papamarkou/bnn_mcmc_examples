@@ -4,9 +4,9 @@ import kanga.plots as ps
 
 from kanga.chains import ChainArray
 
-from bnn_mcmc_examples.examples.mlp.pima.constants import diagnostic_iter_thres
-from bnn_mcmc_examples.examples.mlp.pima.metropolis_hastings.constants import sampler_output_pilot_path
-from bnn_mcmc_examples.examples.mlp.pima.model import model
+from bnn_mcmc_examples.examples.mlp.pima.setting2.constants import diagnostic_iter_thres
+from bnn_mcmc_examples.examples.mlp.pima.setting2.metropolis_hastings.constants import sampler_output_pilot_path
+from bnn_mcmc_examples.examples.mlp.pima.setting2.model import model
 
 # %% Load chain array
 
