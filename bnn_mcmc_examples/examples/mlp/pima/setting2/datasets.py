@@ -8,13 +8,13 @@ from sklearn.model_selection import train_test_split
 from eeyore.constants import torch_to_np_types
 from eeyore.datasets import XYDataset
 
-from bnn_mcmc_examples.datasets import data_paths
-from bnn_mcmc_examples.examples.mlp.pima.constants import dtype
+from bnn_mcmc_examples.datasets.pima.data2.constants import data_path
+from bnn_mcmc_examples.examples.mlp.pima.setting2.constants import dtype
 
 # %% Load Pima data
 
-x = pd.read_csv(data_paths['pima'].joinpath('x.csv'))
-y = pd.read_csv(data_paths['pima'].joinpath('y.csv'))
+x = pd.read_csv(data_path.joinpath('x.csv'))
+y = pd.read_csv(data_path.joinpath('y.csv'))
 
 # %% Split data to training and test subsets
 

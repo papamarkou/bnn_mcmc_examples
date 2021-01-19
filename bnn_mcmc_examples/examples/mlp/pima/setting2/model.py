@@ -8,7 +8,7 @@ from torch.distributions import Normal
 from eeyore.constants import loss_functions
 from eeyore.models import mlp
 
-from bnn_mcmc_examples.examples.mlp.pima.constants import dtype, mlp_dims, mlp_bias, mlp_activations
+from bnn_mcmc_examples.examples.mlp.pima.setting2.constants import dtype, mlp_dims, mlp_bias, mlp_activations
 
 # %% Setup MLP model
 

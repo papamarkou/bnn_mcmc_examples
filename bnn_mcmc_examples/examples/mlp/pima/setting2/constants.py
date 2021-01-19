@@ -6,10 +6,9 @@ from pathlib import Path
 
 # %% Define constants
 
-output_path = Path.home().joinpath('output', 'bnn_mcmc_examples', 'mlp', 'pima')
+output_path = Path.home().joinpath('output', 'bnn_mcmc_examples', 'mlp', 'pima', 'setting2')
 
-num_features = 8
-# num_features = 4
+num_features = 4
 
 mlp_dims = [num_features, 2, 2, 1]
 mlp_bias = 3 * [True]

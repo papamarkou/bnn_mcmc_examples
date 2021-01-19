@@ -2,7 +2,7 @@
 
 from torch.utils.data import DataLoader
 
-from bnn_mcmc_examples.examples.mlp.pima.datasets import test_dataset
+from bnn_mcmc_examples.examples.mlp.pima.setting2.datasets import test_dataset
 
 # %% Load test dataloader with batch size of 1
 
