@@ -2,8 +2,8 @@
 
 from eeyore.samplers import HMC
 
-from bnn_mcmc_examples.examples.mlp.pima.dataloaders import training_dataloader
-from bnn_mcmc_examples.examples.mlp.pima.model import model
+from bnn_mcmc_examples.examples.mlp.pima.setting2.dataloaders import training_dataloader
+from bnn_mcmc_examples.examples.mlp.pima.setting2.model import model
 
 # %% Setup HMC sampler
 

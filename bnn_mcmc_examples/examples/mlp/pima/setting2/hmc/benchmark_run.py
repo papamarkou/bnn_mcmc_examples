@@ -1,8 +1,10 @@
 # %% Import packages
 
-from bnn_mcmc_examples.examples.mlp.pima.constants import num_chains, num_epochs, num_burnin_epochs, verbose, verbose_step
-from bnn_mcmc_examples.examples.mlp.pima.hmc.constants import sampler_output_path
-from bnn_mcmc_examples.examples.mlp.pima.hmc.sampler import sampler
+from bnn_mcmc_examples.examples.mlp.pima.setting2.constants import (
+    num_chains, num_epochs, num_burnin_epochs, verbose, verbose_step
+)
+from bnn_mcmc_examples.examples.mlp.pima.setting2.hmc.constants import sampler_output_path
+from bnn_mcmc_examples.examples.mlp.pima.setting2.hmc.sampler import sampler
 
 # %% Benchmark Metropolis-Hastings sampler
 
