@@ -11,7 +11,7 @@ from bnn_mcmc_examples.examples.mlp.pima.setting1.model import model
 
 # %% Setup proposal variance and proposal kernel for Metropolis-Hastings sampler
 
-proposal_scale = np.sqrt(0.02)
+proposal_scale = np.sqrt(0.05)
 
 kernel = NormalKernel(
     torch.zeros(model.num_params(), dtype=model.dtype),
