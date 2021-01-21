@@ -5,9 +5,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 
-from bnn_mcmc_examples.examples.mlp.pima.setting2.constants import num_chains
-from bnn_mcmc_examples.examples.mlp.pima.setting2.dataloaders import test_dataloader
-from bnn_mcmc_examples.examples.mlp.pima.setting2.hmc.constants import sampler_output_run_paths
+from bnn_mcmc_examples.examples.mlp.pima.setting1.constants import num_chains
+from bnn_mcmc_examples.examples.mlp.pima.setting1.dataloaders import test_dataloader
+from bnn_mcmc_examples.examples.mlp.pima.setting1.hmc.constants import sampler_output_run_paths
 
 # %% Load test data and labels
 

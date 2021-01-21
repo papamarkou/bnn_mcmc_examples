@@ -5,10 +5,10 @@ import torch
 
 from eeyore.chains import ChainLists
 
-from bnn_mcmc_examples.examples.mlp.pima.setting2.constants import dtype, num_chains, pred_iter_thres
-from bnn_mcmc_examples.examples.mlp.pima.setting2.datascanners import test_dataloader
-from bnn_mcmc_examples.examples.mlp.pima.setting2.hmc.constants import sampler_output_run_paths
-from bnn_mcmc_examples.examples.mlp.pima.setting2.model import model
+from bnn_mcmc_examples.examples.mlp.pima.setting1.constants import dtype, num_chains, pred_iter_thres
+from bnn_mcmc_examples.examples.mlp.pima.setting1.datascanners import test_dataloader
+from bnn_mcmc_examples.examples.mlp.pima.setting1.hmc.constants import sampler_output_run_paths
+from bnn_mcmc_examples.examples.mlp.pima.setting1.model import model
 
 # %% Load chain lists
 
