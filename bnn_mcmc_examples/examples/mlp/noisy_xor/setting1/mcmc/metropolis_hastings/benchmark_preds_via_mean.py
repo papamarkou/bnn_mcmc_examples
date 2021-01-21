@@ -5,7 +5,7 @@ import numpy as np
 from eeyore.chains import ChainLists
 
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.constants import dtype
-from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.constants import diagnostic_iter_thres, num_chains
+from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.constants import num_chains, pred_iter_thres
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.dataloaders import test_dataloader
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.metropolis_hastings.constants import sampler_output_run_paths
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.model import model
@@ -17,7 +17,7 @@ chain_lists = ChainLists.from_file(sampler_output_run_paths, keys=['sample'], dt
 # %% Drop burn-in samples
 
 for i in range(num_chains):
-    chain_lists.vals['sample'][i] = chain_lists.vals['sample'][i][diagnostic_iter_thres:]
+    chain_lists.vals['sample'][i] = chain_lists.vals['sample'][i][pred_iter_thres:]
 
 # %% Load test data and labels
 

@@ -18,7 +18,7 @@ y = pd.read_csv(data_path.joinpath('y.csv'))
 
 # %% Split data to training and test subsets
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=1000, stratify=y)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=5000, stratify=y)
 
 # %% Create training dataset
 

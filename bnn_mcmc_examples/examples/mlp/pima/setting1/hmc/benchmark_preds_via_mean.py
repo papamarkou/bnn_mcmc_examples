@@ -4,7 +4,7 @@ import numpy as np
 
 from eeyore.chains import ChainLists
 
-from bnn_mcmc_examples.examples.mlp.pima.setting1.constants import diagnostic_iter_thres, dtype, num_chains
+from bnn_mcmc_examples.examples.mlp.pima.setting1.constants import dtype, num_chains, pred_iter_thres
 from bnn_mcmc_examples.examples.mlp.pima.setting1.dataloaders import test_dataloader
 from bnn_mcmc_examples.examples.mlp.pima.setting1.hmc.constants import sampler_output_run_paths
 from bnn_mcmc_examples.examples.mlp.pima.setting1.model import model
@@ -16,7 +16,7 @@ chain_lists = ChainLists.from_file(sampler_output_run_paths, keys=['sample'], dt
 # %% Drop burn-in samples
 
 for i in range(num_chains):
-    chain_lists.vals['sample'][i] = chain_lists.vals['sample'][i][diagnostic_iter_thres:]
+    chain_lists.vals['sample'][i] = chain_lists.vals['sample'][i][pred_iter_thres:]
 
 # %% Load test data and labels
 
