@@ -6,8 +6,8 @@ import torch
 from eeyore.kernels import NormalKernel
 from eeyore.samplers import MetropolisHastings
 
-from bnn_mcmc_examples.examples.mlp.pima.setting2.dataloaders import training_dataloader
-from bnn_mcmc_examples.examples.mlp.pima.setting2.model import model
+from bnn_mcmc_examples.examples.mlp.pima.setting1.dataloaders import training_dataloader
+from bnn_mcmc_examples.examples.mlp.pima.setting1.model import model
 
 # %% Setup proposal variance and proposal kernel for Metropolis-Hastings sampler
 

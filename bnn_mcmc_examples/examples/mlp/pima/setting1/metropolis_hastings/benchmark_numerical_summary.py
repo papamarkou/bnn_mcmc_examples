@@ -4,8 +4,8 @@ import numpy as np
 
 from kanga.chains import ChainArrays
 
-from bnn_mcmc_examples.examples.mlp.pima.setting2.constants import diagnostic_iter_thres, num_chains
-from bnn_mcmc_examples.examples.mlp.pima.setting2.metropolis_hastings.constants import (
+from bnn_mcmc_examples.examples.mlp.pima.setting1.constants import diagnostic_iter_thres, num_chains
+from bnn_mcmc_examples.examples.mlp.pima.setting1.metropolis_hastings.constants import (
     sampler_output_path, sampler_output_run_paths
 )
 
