@@ -16,7 +16,7 @@ mlp_activations = 3 * [torch.sigmoid]
 
 dtype = torch.float32
 
-num_chains = 4
+num_chains = 10
 
 num_epochs = 110000
 num_burnin_epochs = 0
