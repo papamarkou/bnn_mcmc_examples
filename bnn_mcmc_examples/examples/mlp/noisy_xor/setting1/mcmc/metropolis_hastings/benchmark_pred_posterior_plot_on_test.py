@@ -30,15 +30,15 @@ for i in range(num_chains):
 
     test_logit_dict = {
         0: np.sort(test_logits[(1 - test_labels.squeeze(-1)).to(dtype=torch.bool)]),
-        1: np.sort(test_logits[test_labels.squeeze(-1).to(dtype=torch.bool)])[::-1]
+        1: np.sort(test_logits[test_labels.squeeze(-1).to(dtype=torch.bool)])
     }
 
     num_correct_0s = sum(test_logit_dict[0] < 0.5)
     num_correct_1s = sum(test_logit_dict[1] >= 0.5)
     bar_colors = num_correct_0s * [pred_colors['correct']]
     bar_colors.extend((len(test_logit_dict[0]) - num_correct_0s) * [pred_colors['wrong']])
-    bar_colors.extend(num_correct_1s * [pred_colors['correct']])
     bar_colors.extend((len(test_logit_dict[1]) - num_correct_1s) * [pred_colors['wrong']])
+    bar_colors.extend(num_correct_1s * [pred_colors['correct']])
 
     plt.figure(figsize=[8, 4])
 
