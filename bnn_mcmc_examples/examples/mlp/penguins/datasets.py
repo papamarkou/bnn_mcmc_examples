@@ -9,7 +9,7 @@ from eeyore.constants import torch_to_np_types
 from eeyore.datasets import XYDataset
 
 from bnn_mcmc_examples.datasets import data_paths
-from bnn_mcmc_examples.examples.mlp.pima.setting1.constants import dtype
+from bnn_mcmc_examples.examples.mlp.penguins.constants import dtype
 
 # %% Load Pima data
 
