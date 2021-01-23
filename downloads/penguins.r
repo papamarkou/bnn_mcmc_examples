@@ -36,9 +36,9 @@ reduced_dframe <- na.omit(dframe)
 
 # Convert factor variables to numeric variables
 
-reduced_dframe$species <- as.numeric(reduced_dframe$species) # (Adelie, Chinstrap, Gentoo) = (1, 2, 3)
-reduced_dframe$island <- as.numeric(reduced_dframe$island) # (Biscoe, Dream, Torgersen) = (1, 2, 3)
-reduced_dframe$sex <- as.numeric(reduced_dframe$sex) # (female, male) = (1, 2)
+reduced_dframe$species <- as.numeric(reduced_dframe$species) - 1 # (Adelie, Chinstrap, Gentoo) = (1, 2, 3)
+reduced_dframe$island <- as.numeric(reduced_dframe$island) - 1 # (Biscoe, Dream, Torgersen) = (1, 2, 3)
+reduced_dframe$sex <- as.numeric(reduced_dframe$sex) - 1 # (female, male) = (1, 2)
 
 # Write reduced dataframe to CSV
 

@@ -8,17 +8,22 @@ from sklearn.model_selection import train_test_split
 from eeyore.constants import torch_to_np_types
 from eeyore.datasets import XYDataset
 
-from bnn_mcmc_examples.datasets.pima.data1.constants import data_path
+from bnn_mcmc_examples.datasets import data_paths
 from bnn_mcmc_examples.examples.mlp.pima.setting1.constants import dtype
 
 # %% Load Pima data
 
-x = pd.read_csv(data_path.joinpath('x.csv'))
-y = pd.read_csv(data_path.joinpath('y.csv'))
+x = pd.read_csv(data_paths['penguins'].joinpath('x.csv'))
+y = pd.read_csv(data_paths['penguins'].joinpath('y.csv'))
 
 # %% Split data to training and test subsets
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=5000, stratify=y)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=7000, stratify=y)
+
+# %% Drop covariate 'year'
+
+x_train = x_train.drop(['year'], axis=1)
+x_test = x_test.drop(['year'], axis=1)
 
 # %% Create training dataset
 
