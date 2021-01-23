@@ -10,9 +10,10 @@ output_path = Path.home().joinpath('output', 'bnn_mcmc_examples', 'mlp', 'pengui
 
 num_features = 6
 
-mlp_dims = [num_features, 2, 2, 1]
+mlp_dims = [num_features, 2, 2, 3]
 mlp_bias = 3 * [True]
-mlp_activations = 3 * [torch.sigmoid]
+mlp_activations = 2 * [torch.sigmoid]
+mlp_activations.append(None)
 
 dtype = torch.float32
 

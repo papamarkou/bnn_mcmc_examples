@@ -5,9 +5,9 @@ import torch
 
 from sklearn.metrics import accuracy_score
 
-from bnn_mcmc_examples.examples.mlp.pima.setting1.constants import num_chains, output_path
-from bnn_mcmc_examples.examples.mlp.pima.setting1.dataloaders import test_dataloader
-from bnn_mcmc_examples.examples.mlp.pima.setting1.model import model
+from bnn_mcmc_examples.examples.mlp.penguins.constants import num_chains, output_path
+from bnn_mcmc_examples.examples.mlp.penguins.dataloaders import test_dataloader
+from bnn_mcmc_examples.examples.mlp.penguins.model import model
 
 # %% Create output directory if it does not exist
 
