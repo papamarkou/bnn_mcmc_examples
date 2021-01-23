@@ -9,8 +9,9 @@ from pathlib import Path
 output_path = Path.home().joinpath('output', 'bnn_mcmc_examples', 'mlp', 'penguins')
 
 num_features = 6
+num_classes = 3
 
-mlp_dims = [num_features, 2, 2, 3]
+mlp_dims = [num_features, 2, 2, num_classes]
 mlp_bias = 3 * [True]
 mlp_activations = 2 * [torch.sigmoid]
 mlp_activations.append(None)
