@@ -4,9 +4,9 @@ import numpy as np
 
 from sklearn.metrics import accuracy_score
 
-from bnn_mcmc_examples.examples.mlp.pima.setting1.constants import num_chains
-from bnn_mcmc_examples.examples.mlp.pima.setting1.dataloaders import test_dataloader
-from bnn_mcmc_examples.examples.mlp.pima.setting1.metropolis_hastings.constants import (
+from bnn_mcmc_examples.examples.mlp.penguins.constants import num_chains
+from bnn_mcmc_examples.examples.mlp.penguins.dataloaders import test_dataloader
+from bnn_mcmc_examples.examples.mlp.penguins.metropolis_hastings.constants import (
     sampler_output_path, sampler_output_run_paths
 )
 
