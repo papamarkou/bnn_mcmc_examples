@@ -4,6 +4,7 @@ import pandas as pd
 import torch
 
 from sklearn.model_selection import train_test_split
+from torch.nn.functional import one_hot
 
 from eeyore.constants import torch_to_np_types
 from eeyore.datasets import XYDataset
@@ -36,6 +37,8 @@ training_dataset.x = \
     (training_dataset.x - torch.mean(training_dataset.x, dim=0, keepdim=True))/ \
     torch.std(training_dataset.x, dim=0, keepdim=True, unbiased=False)
 
+training_dataset.y = one_hot(training_dataset.y.squeeze(-1).long()).to(training_dataset.y.dtype)
+
 # %% Create test dataset
 
 test_dataset = XYDataset(
@@ -46,3 +49,5 @@ test_dataset = XYDataset(
 test_dataset.x = \
     (test_dataset.x - torch.mean(test_dataset.x, dim=0, keepdim=True))/ \
     torch.std(test_dataset.x, dim=0, keepdim=True, unbiased=False)
+
+test_dataset.y = one_hot(test_dataset.y.squeeze(-1).long()).to(test_dataset.y.dtype)
