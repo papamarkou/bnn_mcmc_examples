@@ -1,6 +1,7 @@
 # %% Load packages
 
 import numpy as np
+import torch
 
 from sklearn.metrics import accuracy_score
 
@@ -23,7 +24,7 @@ for i in range(num_chains):
     test_preds = np.loadtxt(sampler_output_run_paths[i].joinpath('preds_via_mean.txt'), delimiter=',', skiprows=0)
 
     # Compute test accuracy
-    accuracies[i] = accuracy_score(test_preds, test_labels.squeeze())
+    accuracies[i] = accuracy_score(test_preds, torch.argmax(test_labels, 1))
 
 # %% Save predictive accuracies
 

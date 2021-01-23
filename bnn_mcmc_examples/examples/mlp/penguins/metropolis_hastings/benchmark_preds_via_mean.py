@@ -1,6 +1,7 @@
 # %% Load packages
 
 import numpy as np
+import torch
 
 from eeyore.chains import ChainLists
 
@@ -36,7 +37,7 @@ for i in range(num_chains):
     test_logits = model(test_data)
 
     # Make test predictions
-    test_preds = test_logits.squeeze() > 0.5
+    test_preds = torch.argmax(test_logits.softmax(1), 1)
 
     # Save predictions
     np.savetxt(sampler_output_run_paths[i].joinpath('preds_via_mean.txt'), test_preds, fmt='%d', delimiter=',')
