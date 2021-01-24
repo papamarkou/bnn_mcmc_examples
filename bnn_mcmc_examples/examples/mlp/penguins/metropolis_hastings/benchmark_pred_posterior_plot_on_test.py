@@ -52,7 +52,15 @@ for i in range(num_chains):
         pred_colors['correct'] if cmp else pred_colors['wrong'] for cmp in test_pred_df['preds'] == test_pred_df['labels']
     ]
 
+    test_pred_label_counts = test_pred_df['labels'].value_counts()
+    test_pred_label_cumsum = [
+        test_pred_label_counts.loc[0],
+        test_pred_label_counts.loc[0] + test_pred_label_counts.loc[1]
+    ]
+
     plt.figure(figsize=[8, 4])
+
+    plt.ylim([0, 1])
 
     plt.gca().spines['top'].set_visible(False)
     plt.gca().spines['right'].set_visible(False)
@@ -66,24 +74,33 @@ for i in range(num_chains):
     plt.vlines(
         x=range(len(test_labels)),
         ymin=0,
-        # ymax=test_pred_df['class0'], # This should be a vector of class0, class1, class2
+        ymax=pd.concat([
+            test_pred_df['class0'][:test_pred_label_cumsum[0]],
+            test_pred_df['class1'][test_pred_label_counts.loc[0]:test_pred_label_cumsum[1]],
+            test_pred_df['class2'][test_pred_label_cumsum[1]:]
+        ]),
         color=test_pred_df['color'],
         linewidth=2
     )
 
     #plt.bar(
     #    range(len(test_labels)),
-    #    np.hstack([test_logit_dict[0], test_logit_dict[1]]),
+    #    pd.concat([
+    #        test_pred_df['class0'][:test_pred_label_cumsum[0]],
+    #        test_pred_df['class1'][test_pred_label_counts.loc[0]:test_pred_label_cumsum[1]],
+    #        test_pred_df['class2'][test_pred_label_cumsum[1]:]
+    #    ]),
     #    width=0.7,
-    #    color=bar_colors,
+    #    color=test_pred_df['color'],
     #    align='edge'
     #)
 
     plt.legend(handles=legend_patches, loc='upper left', ncol=1)
 
-    plt.axhline(y=0.5, xmin=0, xmax=len(test_labels), color='black', linestyle='dashed', linewidth=1.5)
+    # plt.axhline(y=1/3, xmin=0, xmax=len(test_labels), color='black', linestyle='dashed', linewidth=1.5)
 
-    plt.axvline(x=0.5*len(test_labels), ymin=0, ymax=1, color='black', linestyle='dotted', linewidth=1.5)
+    plt.axvline(x=test_pred_label_cumsum[0], ymin=0, ymax=1, color='black', linestyle='dotted', linewidth=1.5)
+    plt.axvline(x=test_pred_label_cumsum[1], ymin=0, ymax=1, color='black', linestyle='dotted', linewidth=1.5)
 
     plt.savefig(
         sampler_output_run_paths[i].joinpath('pred_posterior_on_test.png'),
