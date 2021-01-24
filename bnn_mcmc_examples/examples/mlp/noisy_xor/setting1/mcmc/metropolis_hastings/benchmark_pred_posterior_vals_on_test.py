@@ -39,7 +39,7 @@ for k in range(num_chains):
         print(verbose_msg.format(k+1, i+1))
 
         pred_posterior[k, i] = model.predictive_posterior(
-            chain_lists.vals['sample'][k], x.squeeze(), torch.tensor([1.], dtype=dtype)
-        )
+            chain_lists.vals['sample'][k], x, torch.tensor([[1.]], dtype=dtype)
+        ).item()
 
     np.savetxt(sampler_output_run_paths[k].joinpath('pred_posterior_on_test.txt'), pred_posterior[k], delimiter=',')

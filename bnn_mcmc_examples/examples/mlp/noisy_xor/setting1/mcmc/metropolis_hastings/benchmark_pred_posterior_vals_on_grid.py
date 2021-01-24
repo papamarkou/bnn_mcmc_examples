@@ -46,8 +46,8 @@ for k in range(num_chains):
 
             pred_posterior[k, i, j] = model.predictive_posterior(
                 chain_lists.vals['sample'][k],
-                torch.tensor([pred_interval_x1[i], pred_interval_x2[j]], dtype=dtype),
-                torch.tensor([1.], dtype=dtype)
-            )
+                torch.tensor([[pred_interval_x1[i], pred_interval_x2[j]]], dtype=dtype),
+                torch.tensor([[1.]], dtype=dtype)
+            ).item()
 
     np.savetxt(sampler_output_run_paths[k].joinpath('pred_posterior_on_grid.csv'), pred_posterior[k], delimiter=',')
