@@ -44,4 +44,4 @@ for k in range(num_chains):
             y[0, j] = 1.
             test_pred_probs[i, j] = model.predictive_posterior(chain_lists.vals['sample'][k], x, y).item()
 
-    np.savetxt(sampler_output_run_paths[k].joinpath('pred_posterior_on_test.txt'), test_pred_probs, delimiter=',')
+    np.savetxt(sampler_output_run_paths[k].joinpath('pred_posterior_on_test.csv'), test_pred_probs, delimiter=',')

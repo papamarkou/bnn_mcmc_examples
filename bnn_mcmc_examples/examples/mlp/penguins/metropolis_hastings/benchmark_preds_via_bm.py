@@ -9,7 +9,7 @@ from bnn_mcmc_examples.examples.mlp.penguins.metropolis_hastings.constants impor
 
 for i in range(num_chains):
     test_pred_probs = np.loadtxt(
-        sampler_output_run_paths[i].joinpath('pred_posterior_on_test.txt'), delimiter=',', skiprows=0
+        sampler_output_run_paths[i].joinpath('pred_posterior_on_test.csv'), delimiter=',', skiprows=0
     )
 
     test_preds = np.argmax(test_pred_probs, axis=1)

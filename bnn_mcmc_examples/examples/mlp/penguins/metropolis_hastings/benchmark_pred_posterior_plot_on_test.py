@@ -29,7 +29,7 @@ legend_patches = [mpatches.Patch(color=pred_colors[key], label=key.capitalize())
 
 for i in range(num_chains):
     test_pred_df = pd.read_csv(
-        sampler_output_run_paths[i].joinpath('pred_posterior_on_test.txt'),
+        sampler_output_run_paths[i].joinpath('pred_posterior_on_test.csv'),
         header=None,
         names=['class0', 'class1', 'class2']
     )
@@ -51,6 +51,8 @@ for i in range(num_chains):
     test_pred_df['color'] = [
         pred_colors['correct'] if cmp else pred_colors['wrong'] for cmp in test_pred_df['preds'] == test_pred_df['labels']
     ]
+
+    test_pred_df.to_csv(sampler_output_run_paths[i].joinpath('pred_posterior_on_test_for_fig.csv'), index=False)
 
     test_pred_label_counts = test_pred_df['labels'].value_counts()
     test_pred_label_cumsum = [
