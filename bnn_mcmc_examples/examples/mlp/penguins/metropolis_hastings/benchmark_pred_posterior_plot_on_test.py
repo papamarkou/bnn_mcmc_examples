@@ -3,15 +3,17 @@
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 import torch
 
 from bnn_mcmc_examples.examples.mlp.penguins.constants import num_chains
 from bnn_mcmc_examples.examples.mlp.penguins.dataloaders import test_dataloader
 from bnn_mcmc_examples.examples.mlp.penguins.metropolis_hastings.constants import sampler_output_run_paths
 
-# %% Load test data and labels
+# %% Load test labels
 
-test_data, test_labels = next(iter(test_dataloader))
+_, test_labels = next(iter(test_dataloader))
+test_labels = torch.argmax(test_labels, 1).detach().cpu().numpy()
 
 # %% Plot predictive posteriors
 
@@ -26,19 +28,29 @@ for key in pred_colors:
 legend_patches = [mpatches.Patch(color=pred_colors[key], label=key.capitalize()) for key in pred_colors]
 
 for i in range(num_chains):
-    test_logits = np.loadtxt(sampler_output_run_paths[i].joinpath('pred_posterior_on_test.txt'), delimiter=',', skiprows=0)
+    test_pred_df = pd.read_csv(
+        sampler_output_run_paths[i].joinpath('pred_posterior_on_test.txt'),
+        header=None,
+        names=['class0', 'class1', 'class2']
+    )
 
-    test_logit_dict = {
-        0: np.sort(test_logits[(1 - test_labels.squeeze(-1)).to(dtype=torch.bool)]),
-        1: np.sort(test_logits[test_labels.squeeze(-1).to(dtype=torch.bool)])
-    }
+    test_pred_df['preds'] = np.loadtxt(
+        sampler_output_run_paths[i].joinpath('preds_via_bm.txt'), dtype=np.int, delimiter=',', skiprows=0
+    )
 
-    num_correct_0s = sum(test_logit_dict[0] < 0.5)
-    num_correct_1s = sum(test_logit_dict[1] >= 0.5)
-    bar_colors = num_correct_0s * [pred_colors['correct']]
-    bar_colors.extend((len(test_logit_dict[0]) - num_correct_0s) * [pred_colors['wrong']])
-    bar_colors.extend((len(test_logit_dict[1]) - num_correct_1s) * [pred_colors['wrong']])
-    bar_colors.extend(num_correct_1s * [pred_colors['correct']])
+    test_pred_df['labels'] = test_labels
+
+    test_pred_df.sort_values(['labels'], ascending=True, inplace=True)
+
+    test_pred_df = pd.concat([
+        test_pred_df.loc[test_pred_df['labels'] == 0].sort_values(['class0'], ascending=True),
+        test_pred_df.loc[test_pred_df['labels'] == 1].sort_values(['class1'], ascending=True),
+        test_pred_df.loc[test_pred_df['labels'] == 2].sort_values(['class2'], ascending=True)
+    ])
+
+    test_pred_df['color'] = [
+        pred_colors['correct'] if cmp else pred_colors['wrong'] for cmp in test_pred_df['preds'] == test_pred_df['labels']
+    ]
 
     plt.figure(figsize=[8, 4])
 
@@ -54,8 +66,8 @@ for i in range(num_chains):
     plt.vlines(
         x=range(len(test_labels)),
         ymin=0,
-        ymax=np.hstack([test_logit_dict[0], test_logit_dict[1]]),
-        color=bar_colors,
+        # ymax=test_pred_df['class0'], # This should be a vector of class0, class1, class2
+        color=test_pred_df['color'],
         linewidth=2
     )
 
