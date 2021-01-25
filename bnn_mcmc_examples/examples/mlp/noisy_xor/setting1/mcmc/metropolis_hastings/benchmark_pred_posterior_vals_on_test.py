@@ -22,8 +22,6 @@ for i in range(num_chains):
 
 # %% Compute and save predictive posteriors
 
-pred_posterior = np.empty([num_chains, len(test_dataloader)])
-
 verbose_msg = 'Evaluating predictive posterior based on chain {:' \
     + str(len(str(num_chains))) \
     + '} out of ' \
@@ -35,11 +33,14 @@ verbose_msg = 'Evaluating predictive posterior based on chain {:' \
     + '...'
 
 for k in range(num_chains):
+    test_pred_probs = np.empty([len(test_dataloader), 2])
+
     for i, (x, _) in enumerate(test_dataloader):
         print(verbose_msg.format(k+1, i+1))
 
-        pred_posterior[k, i] = model.predictive_posterior(
+        test_pred_probs[i, 1] = model.predictive_posterior(
             chain_lists.vals['sample'][k], x, torch.tensor([[1.]], dtype=dtype)
         ).item()
+        test_pred_probs[i, 0] = 1. - test_pred_probs[i, 1]
 
-    np.savetxt(sampler_output_run_paths[k].joinpath('pred_posterior_on_test.txt'), pred_posterior[k], delimiter=',')
+    np.savetxt(sampler_output_run_paths[k].joinpath('pred_posterior_on_test.csv'), test_pred_probs, delimiter=',')

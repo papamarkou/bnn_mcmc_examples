@@ -21,8 +21,6 @@ for i in range(num_chains):
 
 # %% Compute and save predictive posteriors
 
-pred_posterior = np.empty([num_chains, len(test_dataloader)])
-
 verbose_msg = 'Evaluating predictive posterior based on chain {:' \
     + str(len(str(num_chains))) \
     + '} out of ' \

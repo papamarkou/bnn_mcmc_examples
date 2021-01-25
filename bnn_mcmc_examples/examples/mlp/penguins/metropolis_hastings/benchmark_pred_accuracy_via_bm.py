@@ -20,10 +20,8 @@ test_data, test_labels = next(iter(test_dataloader))
 accuracies = np.empty(num_chains)
 
 for i in range(num_chains):
-    # Load test predictions
     test_preds = np.loadtxt(sampler_output_run_paths[i].joinpath('preds_via_bm.txt'), delimiter=',', skiprows=0)
 
-    # Compute test accuracy
     accuracies[i] = accuracy_score(test_preds, torch.argmax(test_labels, 1))
 
 # %% Save predictive accuracies
