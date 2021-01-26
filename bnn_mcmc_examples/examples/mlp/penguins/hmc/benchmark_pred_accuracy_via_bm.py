@@ -1,12 +1,13 @@
 # %% Load packages
 
 import numpy as np
+import torch
 
 from sklearn.metrics import accuracy_score
 
-from bnn_mcmc_examples.examples.mlp.pima.setting1.constants import num_chains
-from bnn_mcmc_examples.examples.mlp.pima.setting1.dataloaders import test_dataloader
-from bnn_mcmc_examples.examples.mlp.pima.setting1.hmc.constants import sampler_output_path, sampler_output_run_paths
+from bnn_mcmc_examples.examples.mlp.penguins.constants import num_chains
+from bnn_mcmc_examples.examples.mlp.penguins.dataloaders import test_dataloader
+from bnn_mcmc_examples.examples.mlp.penguins.hmc.constants import sampler_output_path, sampler_output_run_paths
 
 # %% Load test data and labels
 
@@ -17,11 +18,9 @@ test_data, test_labels = next(iter(test_dataloader))
 accuracies = np.empty(num_chains)
 
 for i in range(num_chains):
-    # Load test predictions
-    test_preds = np.loadtxt(sampler_output_run_paths[i].joinpath('preds_via_bm.txt'), delimiter=',', skiprows=0)
+    test_preds = np.loadtxt(sampler_output_run_paths[i].joinpath('preds_via_bm.txt'), skiprows=0)
 
-    # Compute test accuracy
-    accuracies[i] = accuracy_score(test_preds, test_labels.squeeze())
+    accuracies[i] = accuracy_score(test_preds, torch.argmax(test_labels, 1))
 
 # %% Save predictive accuracies
 

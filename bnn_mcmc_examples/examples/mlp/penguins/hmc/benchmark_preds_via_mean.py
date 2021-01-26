@@ -1,13 +1,14 @@
 # %% Load packages
 
 import numpy as np
+import torch
 
 from eeyore.chains import ChainLists
 
-from bnn_mcmc_examples.examples.mlp.pima.setting1.constants import dtype, num_chains, pred_iter_thres
-from bnn_mcmc_examples.examples.mlp.pima.setting1.dataloaders import test_dataloader
-from bnn_mcmc_examples.examples.mlp.pima.setting1.hmc.constants import sampler_output_run_paths
-from bnn_mcmc_examples.examples.mlp.pima.setting1.model import model
+from bnn_mcmc_examples.examples.mlp.penguins.constants import dtype, num_chains, num_classes, pred_iter_thres
+from bnn_mcmc_examples.examples.mlp.penguins.datascanners import test_dataloader
+from bnn_mcmc_examples.examples.mlp.penguins.hmc.constants import sampler_output_run_paths
+from bnn_mcmc_examples.examples.mlp.penguins.model import model
 
 # %% Load chain lists
 
@@ -18,25 +19,22 @@ chain_lists = ChainLists.from_file(sampler_output_run_paths, keys=['sample'], dt
 for i in range(num_chains):
     chain_lists.vals['sample'][i] = chain_lists.vals['sample'][i][pred_iter_thres:]
 
-# %% Load test data and labels
-
-test_data, test_labels = next(iter(test_dataloader))
-
 # %% Compute chain means
 
 means = chain_lists.mean()
 
 # %% Make and save predictions
 
-for i in range(num_chains):
-    # Initialize model parameters
-    model.set_params(means[i, :].clone().detach())
+for k in range(num_chains):
+    test_pred_probs = np.empty([len(test_dataloader), num_classes])
 
-    # Compute test logits
-    test_logits = model(test_data)
+    for i, (x, _) in enumerate(test_dataloader):
+        for j in range(num_classes):
+            y = torch.zeros([1, num_classes], dtype=dtype)
+            y[0, j] = 1.
+            integral, _ = model.predictive_posterior([means[k, :]], x, y)
+            test_pred_probs[i, j] = integral.item()
 
-    # Make test predictions
-    test_preds = test_logits.squeeze() > 0.5
+    test_preds = np.argmax(test_pred_probs, axis=1)
 
-    # Save predictions
-    np.savetxt(sampler_output_run_paths[i].joinpath('preds_via_mean.txt'), test_preds, fmt='%d', delimiter=',')
+    np.savetxt(sampler_output_run_paths[k].joinpath('preds_via_mean.txt'), test_preds, fmt='%d')

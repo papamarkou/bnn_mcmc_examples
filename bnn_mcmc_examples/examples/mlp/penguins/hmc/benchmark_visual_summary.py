@@ -4,8 +4,8 @@ import numpy as np
 
 import kanga.plots as ps
 
-from bnn_mcmc_examples.examples.mlp.pima.setting1.constants import num_chains
-from bnn_mcmc_examples.examples.mlp.pima.setting1.hmc.constants import sampler_output_path, sampler_output_run_paths
+from bnn_mcmc_examples.examples.mlp.penguins.constants import num_chains
+from bnn_mcmc_examples.examples.mlp.penguins.hmc.constants import sampler_output_path, sampler_output_run_paths
 
 # %% Load correlation matrices
 

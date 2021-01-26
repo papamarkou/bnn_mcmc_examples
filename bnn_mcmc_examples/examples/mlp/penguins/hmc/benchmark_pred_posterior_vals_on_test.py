@@ -5,10 +5,10 @@ import torch
 
 from eeyore.chains import ChainLists
 
-from bnn_mcmc_examples.examples.mlp.pima.setting1.constants import dtype, num_chains, pred_iter_thres
-from bnn_mcmc_examples.examples.mlp.pima.setting1.datascanners import test_dataloader
-from bnn_mcmc_examples.examples.mlp.pima.setting1.hmc.constants import sampler_output_run_paths
-from bnn_mcmc_examples.examples.mlp.pima.setting1.model import model
+from bnn_mcmc_examples.examples.mlp.penguins.constants import dtype, num_chains, num_classes, pred_iter_thres
+from bnn_mcmc_examples.examples.mlp.penguins.datascanners import test_dataloader
+from bnn_mcmc_examples.examples.mlp.penguins.hmc.constants import sampler_output_run_paths
+from bnn_mcmc_examples.examples.mlp.penguins.model import model
 
 # %% Load chain lists
 
@@ -21,8 +21,6 @@ for i in range(num_chains):
 
 # %% Compute and save predictive posteriors
 
-pred_posterior = np.empty([num_chains, len(test_dataloader)])
-
 verbose_msg = 'Evaluating predictive posterior based on chain {:' \
     + str(len(str(num_chains))) \
     + '} out of ' \
@@ -34,11 +32,23 @@ verbose_msg = 'Evaluating predictive posterior based on chain {:' \
     + '...'
 
 for k in range(num_chains):
+    test_pred_probs = np.empty([len(test_dataloader), num_classes])
+    nums_dropped_samples = np.empty([len(test_dataloader), num_classes], dtype=np.int64)
+
     for i, (x, _) in enumerate(test_dataloader):
         print(verbose_msg.format(k+1, i+1))
 
-        pred_posterior[k, i] = model.predictive_posterior(
-            chain_lists.vals['sample'][k], x.squeeze(), torch.tensor([1.], dtype=dtype)
-        )
+        for j in range(num_classes):
+            y = torch.zeros([1, num_classes], dtype=dtype)
+            y[0, j] = 1.
+            integral, num_dropped_samples = model.predictive_posterior(chain_lists.vals['sample'][k], x, y)
+            test_pred_probs[i, j] = integral.item()
+            nums_dropped_samples[i, j] = num_dropped_samples
 
-    np.savetxt(sampler_output_run_paths[k].joinpath('pred_posterior_on_test.txt'), pred_posterior[k], delimiter=',')
+    np.savetxt(sampler_output_run_paths[k].joinpath('pred_posterior_on_test.csv'), test_pred_probs, delimiter=',')
+    np.savetxt(
+        sampler_output_run_paths[k].joinpath('pred_posterior_on_test_num_dropped_samples.csv'),
+        nums_dropped_samples,
+        fmt='%d',
+        delimiter=','
+    )
