@@ -9,6 +9,9 @@ bnn_mcmc_examples/datasets/pima/data1/__pycache__
 bnn_mcmc_examples/datasets/pima/data2/__pycache__
 bnn_mcmc_examples/examples/mlp/exact_xor/__pycache__
 bnn_mcmc_examples/examples/mlp/exact_xor/metropolis_hastings/__pycache__
+bnn_mcmc_examples/examples/mlp/hawks/__pycache__
+bnn_mcmc_examples/examples/mlp/hawks/hmc/__pycache__
+bnn_mcmc_examples/examples/mlp/hawks/metropolis_hastings/__pycache__
 bnn_mcmc_examples/examples/mlp/noisy_xor/setting1/__pycache__
 bnn_mcmc_examples/examples/mlp/noisy_xor/setting1/mcmc/__pycache__
 bnn_mcmc_examples/examples/mlp/noisy_xor/setting1/mcmc/hmc/__pycache__
