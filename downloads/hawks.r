@@ -38,6 +38,11 @@ print(sapply(Hawks, function(x) sum(is.na(x))))
 
 reduced_dframe <- na.omit(Hawks[c("Species", "Age", "Wing", "Weight", "Culmen", "Hallux", "Tail")])
 
+# Dimensions of reduced dataframe
+
+print(c("Dimensions of reduced dataframe:"))
+print(dim(reduced_dframe))
+
 # Frequencies of species in reduced dataframe
 
 print("Frequencies of species in reduced dataframe:")
