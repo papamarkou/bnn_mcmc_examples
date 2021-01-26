@@ -14,4 +14,4 @@ for i in range(num_chains):
 
     test_preds = np.argmax(test_pred_probs, axis=1)
 
-    np.savetxt(sampler_output_run_paths[i].joinpath('preds_via_bm.txt'), test_preds, fmt='%d', delimiter=',')
+    np.savetxt(sampler_output_run_paths[i].joinpath('preds_via_bm.txt'), test_preds, fmt='%d')
