@@ -10,7 +10,7 @@ from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.prior.constants import sa
 
 # %% Load test data and labels
 
-test_data, test_labels = next(iter(test_dataloader))
+_, test_labels = next(iter(test_dataloader))
 
 # %% Compute predictive accuracies
 

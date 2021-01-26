@@ -10,17 +10,15 @@ from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.prior.constants import sa
 
 # %% Load test data and labels
 
-test_data, test_labels = next(iter(test_dataloader))
+_, test_labels = next(iter(test_dataloader))
 
 # %% Compute predictive accuracies
 
 accuracies = np.empty(num_chains)
 
 for i in range(num_chains):
-    # Load test predictions
     test_preds = np.loadtxt(sampler_output_run_paths[i].joinpath('preds_via_mean.txt'), skiprows=0)
 
-    # Compute test accuracy
     accuracies[i] = accuracy_score(test_preds, test_labels.squeeze())
 
 # %% Save predictive accuracies
