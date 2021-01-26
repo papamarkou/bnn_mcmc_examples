@@ -30,8 +30,9 @@ for k in range(num_chains):
     test_pred_probs = np.empty([len(test_dataloader)])
 
     for i, (x, _) in enumerate(test_dataloader):
-        test_pred_probs[i] = model.predictive_posterior([means[k, :]], x, torch.tensor([[1.]], dtype=dtype)).item()
+        integral, _ = model.predictive_posterior([means[k, :]], x, torch.tensor([[1.]], dtype=dtype))
+        test_pred_probs[i] = integral.item()
 
     test_preds = test_pred_probs > 0.5
 
-    np.savetxt(sampler_output_run_paths[k].joinpath('preds_via_mean.txt'), test_preds, fmt='%d', delimiter=',')
+    np.savetxt(sampler_output_run_paths[k].joinpath('preds_via_mean.txt'), test_preds, fmt='%d')
