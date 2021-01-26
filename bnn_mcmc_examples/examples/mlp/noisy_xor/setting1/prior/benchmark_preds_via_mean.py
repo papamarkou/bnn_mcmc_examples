@@ -35,4 +35,4 @@ for k in range(num_chains):
 
     test_preds = test_pred_probs > 0.5
 
-    np.savetxt(sampler_output_run_paths[k].joinpath('preds_via_mean.txt'), test_preds, fmt='%d', delimiter=',')
+    np.savetxt(sampler_output_run_paths[k].joinpath('preds_via_mean.txt'), test_preds, fmt='%d')

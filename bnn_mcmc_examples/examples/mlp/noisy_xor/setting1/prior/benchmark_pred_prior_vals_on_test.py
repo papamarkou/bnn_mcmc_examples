@@ -50,6 +50,5 @@ for k in range(num_chains):
     np.savetxt(
         sampler_output_run_paths[k].joinpath('pred_prior_on_test_num_dropped_samples.txt'),
         nums_dropped_samples,
-        fmt='%d',
-        delimiter=','
+        fmt='%d'
     )
