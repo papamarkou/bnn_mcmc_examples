@@ -6,7 +6,7 @@ from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.constants import (
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.hmc.constants import sampler_output_path
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.hmc.sampler import sampler
 
-# %% Benchmark Metropolis-Hastings sampler
+# %% Benchmark HMC sampler
 
 sampler.benchmark(
     num_chains=num_chains,

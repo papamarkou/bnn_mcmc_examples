@@ -6,7 +6,7 @@ from bnn_mcmc_examples.examples.mlp.pima.setting2.constants import (
 from bnn_mcmc_examples.examples.mlp.pima.setting2.hmc.constants import sampler_output_path
 from bnn_mcmc_examples.examples.mlp.pima.setting2.hmc.sampler import sampler
 
-# %% Benchmark Metropolis-Hastings sampler
+# %% Benchmark HMC sampler
 
 sampler.benchmark(
     num_chains=num_chains,

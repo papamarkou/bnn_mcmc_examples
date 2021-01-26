@@ -7,7 +7,7 @@ from bnn_mcmc_examples.examples.mlp.penguins.constants import num_burnin_epochs,
 from bnn_mcmc_examples.examples.mlp.penguins.hmc.constants import sampler_output_pilot_path
 from bnn_mcmc_examples.examples.mlp.penguins.hmc.sampler import sampler
 
-# %% Run Metropolis-Hastings sampler
+# %% Run HMC sampler
 
 start_time = timer()
 

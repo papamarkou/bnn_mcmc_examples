@@ -9,7 +9,7 @@ from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.constants import (
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.hmc.constants import sampler_output_pilot_path
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.hmc.sampler import sampler
 
-# %% Run Metropolis-Hastings sampler
+# %% Run HMC sampler
 
 start_time = timer()
 

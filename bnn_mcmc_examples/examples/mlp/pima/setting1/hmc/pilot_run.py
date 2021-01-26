@@ -7,7 +7,7 @@ from bnn_mcmc_examples.examples.mlp.pima.setting1.constants import num_burnin_ep
 from bnn_mcmc_examples.examples.mlp.pima.setting1.hmc.constants import sampler_output_pilot_path
 from bnn_mcmc_examples.examples.mlp.pima.setting1.hmc.sampler import sampler
 
-# %% Run Metropolis-Hastings sampler
+# %% Run HMC sampler
 
 start_time = timer()
 

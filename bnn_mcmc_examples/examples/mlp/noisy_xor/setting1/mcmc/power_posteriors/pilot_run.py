@@ -9,7 +9,7 @@ from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.constants import (
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.power_posteriors.constants import sampler_output_pilot_path
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.power_posteriors.sampler import sampler
 
-# %% Run Metropolis-Hastings sampler
+# %% Run power posterior sampler
 
 start_time = timer()
 
