@@ -52,7 +52,7 @@ for i in range(num_chains):
         pred_colors['correct'] if cmp else pred_colors['wrong'] for cmp in test_pred_df['preds'] == test_pred_df['labels']
     ]
 
-    test_pred_df.to_csv(sampler_output_run_paths[i].joinpath('pred_posterior_on_test_for_fig.csv'), index=False)
+    test_pred_df.to_csv(sampler_output_run_paths[i].joinpath('pred_posterior_on_test_for_fig.csv'))
 
     test_pred_label_counts = test_pred_df['labels'].value_counts()
     test_pred_label_cumsum = [
