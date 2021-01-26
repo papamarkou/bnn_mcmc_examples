@@ -16,5 +16,5 @@ for i in range(num_chains):
 
 for i in range(num_chains):
     prior_samples = torch.stack([model.prior.sample() for _ in range(num_epochs)])
-    
-    np.savetxt(sampler_output_run_paths[i].joinpath('sample.csv'), prior_samples, delimiter=',')
+
+    np.savetxt(sampler_output_run_paths[i].joinpath('sample.csv'), prior_samples.detach().cpu().numpy(), delimiter=',')
