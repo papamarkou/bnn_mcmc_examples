@@ -2,7 +2,7 @@
 
 from torch.utils.data import DataLoader
 
-from bnn_mcmc_examples.examples.mlp.penguins.datasets import training_dataset, test_dataset
+from bnn_mcmc_examples.examples.mlp.hawks.datasets import training_dataset, test_dataset
 
 # %% Create training dataloader
 

@@ -10,21 +10,16 @@ from eeyore.constants import torch_to_np_types
 from eeyore.datasets import XYDataset
 
 from bnn_mcmc_examples.datasets import data_paths
-from bnn_mcmc_examples.examples.mlp.penguins.constants import dtype
+from bnn_mcmc_examples.examples.mlp.hawks.constants import dtype
 
 # %% Load Pima data
 
-x = pd.read_csv(data_paths['penguins'].joinpath('x.csv'))
-y = pd.read_csv(data_paths['penguins'].joinpath('y.csv'))
+x = pd.read_csv(data_paths['hawks'].joinpath('x.csv'))
+y = pd.read_csv(data_paths['hawks'].joinpath('y.csv'))
 
 # %% Split data to training and test subsets
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=7000, stratify=y)
-
-# %% Drop covariate 'year'
-
-x_train = x_train.drop(['year'], axis=1)
-x_test = x_test.drop(['year'], axis=1)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=9000, stratify=y)
 
 # %% Create training dataset
 

@@ -6,7 +6,7 @@ from pathlib import Path
 
 # %% Define constants
 
-output_path = Path.home().joinpath('output', 'bnn_mcmc_examples', 'mlp', 'penguins')
+output_path = Path.home().joinpath('output', 'bnn_mcmc_examples', 'mlp', 'hawks')
 
 num_features = 6
 num_classes = 3
@@ -21,9 +21,9 @@ dtype = torch.float32
 num_chains = 2
 # num_chains = 10
 
-num_epochs = 110000
+num_epochs = 11000
 num_burnin_epochs = 0
-diagnostic_iter_thres = 10000
+diagnostic_iter_thres = 1000
 # num_epochs = 110000
 # num_burnin_epochs = 0
 # diagnostic_iter_thres = 10000
@@ -31,5 +31,5 @@ diagnostic_iter_thres = 10000
 verbose = True
 verbose_step = 1000
 
-pred_iter_thres = 100000
+pred_iter_thres = 10000
 # pred_iter_thres = 100000
