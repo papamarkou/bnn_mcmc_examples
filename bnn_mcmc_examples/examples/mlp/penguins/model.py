@@ -16,7 +16,7 @@ hparams = mlp.Hyperparameters(dims=mlp_dims, bias=mlp_bias, activations=mlp_acti
 
 model = mlp.MLP(loss=loss_functions['multiclass_classification'], hparams=hparams, dtype=dtype)
 
-prior_scale = np.sqrt(100.)
+prior_scale = np.sqrt(10.)
 
 model.prior = Normal(
     torch.zeros(model.num_params(), dtype=model.dtype),
