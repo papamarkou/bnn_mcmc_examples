@@ -5,10 +5,10 @@ import torch
 
 from eeyore.chains import ChainLists
 
-from bnn_mcmc_examples.examples.mlp.penguins.constants import dtype, num_chains, num_classes, pred_iter_thres
-from bnn_mcmc_examples.examples.mlp.penguins.datascanners import test_dataloader
-from bnn_mcmc_examples.examples.mlp.penguins.metropolis_hastings.constants import sampler_output_run_paths
-from bnn_mcmc_examples.examples.mlp.penguins.model import model
+from bnn_mcmc_examples.examples.mlp.hawks.constants import dtype, num_chains, num_classes, pred_iter_thres
+from bnn_mcmc_examples.examples.mlp.hawks.datascanners import test_dataloader
+from bnn_mcmc_examples.examples.mlp.hawks.metropolis_hastings.constants import sampler_output_run_paths
+from bnn_mcmc_examples.examples.mlp.hawks.model import model
 
 # %% Load chain lists
 

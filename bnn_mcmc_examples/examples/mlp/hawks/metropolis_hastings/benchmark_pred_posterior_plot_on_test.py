@@ -6,9 +6,9 @@ import numpy as np
 import pandas as pd
 import torch
 
-from bnn_mcmc_examples.examples.mlp.penguins.constants import num_chains
-from bnn_mcmc_examples.examples.mlp.penguins.dataloaders import test_dataloader
-from bnn_mcmc_examples.examples.mlp.penguins.metropolis_hastings.constants import sampler_output_run_paths
+from bnn_mcmc_examples.examples.mlp.hawks.constants import num_chains
+from bnn_mcmc_examples.examples.mlp.hawks.dataloaders import test_dataloader
+from bnn_mcmc_examples.examples.mlp.hawks.metropolis_hastings.constants import sampler_output_run_paths
 
 # %% Load test labels
 

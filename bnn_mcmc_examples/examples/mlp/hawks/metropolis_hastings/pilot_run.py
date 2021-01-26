@@ -3,9 +3,9 @@
 from datetime import timedelta
 from timeit import default_timer as timer
 
-from bnn_mcmc_examples.examples.mlp.penguins.constants import num_burnin_epochs, num_epochs, verbose, verbose_step
-from bnn_mcmc_examples.examples.mlp.penguins.metropolis_hastings.constants import sampler_output_pilot_path
-from bnn_mcmc_examples.examples.mlp.penguins.metropolis_hastings.sampler import sampler
+from bnn_mcmc_examples.examples.mlp.hawks.constants import num_burnin_epochs, num_epochs, verbose, verbose_step
+from bnn_mcmc_examples.examples.mlp.hawks.metropolis_hastings.constants import sampler_output_pilot_path
+from bnn_mcmc_examples.examples.mlp.hawks.metropolis_hastings.sampler import sampler
 
 # %% Run Metropolis-Hastings sampler
 
