@@ -32,7 +32,8 @@ for k in range(num_chains):
         for j in range(num_classes):
             y = torch.zeros([1, num_classes], dtype=dtype)
             y[0, j] = 1.
-            test_pred_probs[i, j] = model.predictive_posterior([means[k, :]], x, y).item()
+            integral, _ = model.predictive_posterior([means[k, :]], x, y)
+            test_pred_probs[i, j] = integral.item()
 
     test_preds = np.argmax(test_pred_probs, axis=1)
 

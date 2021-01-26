@@ -33,6 +33,7 @@ verbose_msg = 'Evaluating predictive posterior based on chain {:' \
 
 for k in range(num_chains):
     test_pred_probs = np.empty([len(test_dataloader), num_classes])
+    nums_dropped_samples = np.empty([len(test_dataloader), num_classes], dtype=np.int64)
 
     for i, (x, _) in enumerate(test_dataloader):
         print(verbose_msg.format(k+1, i+1))
@@ -40,6 +41,14 @@ for k in range(num_chains):
         for j in range(num_classes):
             y = torch.zeros([1, num_classes], dtype=dtype)
             y[0, j] = 1.
-            test_pred_probs[i, j] = model.predictive_posterior(chain_lists.vals['sample'][k], x, y).item()
+            integral, num_dropped_samples = model.predictive_posterior(chain_lists.vals['sample'][k], x, y)
+            test_pred_probs[i, j] = integral.item()
+            nums_dropped_samples[i, j] = num_dropped_samples
 
     np.savetxt(sampler_output_run_paths[k].joinpath('pred_posterior_on_test.csv'), test_pred_probs, delimiter=',')
+    np.savetxt(
+        sampler_output_run_paths[k].joinpath('pred_posterior_on_test_num_dropped_samples.csv'),
+        nums_dropped_samples,
+        fmt='%d',
+        delimiter=','
+    )
