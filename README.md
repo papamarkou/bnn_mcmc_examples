@@ -13,5 +13,8 @@ For each MCMC simulation, the scripts are organized in the following order:
 5. `benchmark_mc_cov.py`
 6. `benchmark_numerical_summary.py`
 7. `benchmark_visual_summary.py`
+8. `benchmark_pred_posterior_vals_on_test.py`
+9. `benchmark_preds_via_bm.py`
+10. `benchmark_pred_accuracy_via_bm.py`
 
 To summarize the comparison of samplers across MCMC simulations, run `mc_efficiency.py`.
