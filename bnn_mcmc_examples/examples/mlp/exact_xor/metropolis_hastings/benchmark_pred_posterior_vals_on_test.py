@@ -5,11 +5,10 @@ import torch
 
 from eeyore.chains import ChainLists
 
-from bnn_mcmc_examples.examples.mlp.exact_xor.constants import num_chains, pred_iter_thres
 from bnn_mcmc_examples.examples.mlp.exact_xor.constants import dtype, num_chains, pred_iter_thres
 from bnn_mcmc_examples.examples.mlp.exact_xor.datascanner import dataloader
 from bnn_mcmc_examples.examples.mlp.exact_xor.metropolis_hastings.constants import sampler_output_run_paths
-from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.model import model
+from bnn_mcmc_examples.examples.mlp.exact_xor.model import model
 
 # %% Load chain lists
 

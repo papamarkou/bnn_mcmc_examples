@@ -22,3 +22,5 @@ diagnostic_iter_thres = 10000
 
 verbose = True
 verbose_step = 1000
+
+pred_iter_thres = 100000
