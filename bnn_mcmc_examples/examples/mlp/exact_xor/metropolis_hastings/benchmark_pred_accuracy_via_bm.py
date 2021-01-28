@@ -19,10 +19,10 @@ _, test_labels = next(iter(dataloader))
 accuracies = np.empty(num_chains)
 
 for i in range(num_chains):
-    test_preds = np.loadtxt(sampler_output_run_paths[i].joinpath('preds_via_mean.txt'), skiprows=0)
+    test_preds = np.loadtxt(sampler_output_run_paths[i].joinpath('preds_via_bm.txt'), skiprows=0)
 
     accuracies[i] = accuracy_score(test_preds, test_labels.squeeze())
 
 # %% Save predictive accuracies
 
-np.savetxt(sampler_output_path.joinpath('accuracies_via_mean.txt'), accuracies)
+np.savetxt(sampler_output_path.joinpath('accuracies_via_bm.txt'), accuracies)

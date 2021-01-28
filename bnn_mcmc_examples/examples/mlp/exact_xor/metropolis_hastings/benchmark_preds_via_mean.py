@@ -1,11 +1,12 @@
 # %% Load packages
 
 import numpy as np
+import torch
 
 from eeyore.chains import ChainLists
 
-from bnn_mcmc_examples.examples.mlp.exact_xor.constants import diagnostic_iter_thres, dtype, num_chains
-from bnn_mcmc_examples.examples.mlp.exact_xor.dataloader import dataloader
+from bnn_mcmc_examples.examples.mlp.exact_xor.constants import dtype, num_chains, pred_iter_thres
+from bnn_mcmc_examples.examples.mlp.exact_xor.datascanner import dataloader
 from bnn_mcmc_examples.examples.mlp.exact_xor.metropolis_hastings.constants import sampler_output_run_paths
 from bnn_mcmc_examples.examples.mlp.exact_xor.model import model
 
@@ -16,11 +17,7 @@ chain_lists = ChainLists.from_file(sampler_output_run_paths, keys=['sample'], dt
 # %% Drop burn-in samples
 
 for i in range(num_chains):
-    chain_lists.vals['sample'][i] = chain_lists.vals['sample'][i][diagnostic_iter_thres:]
-
-# %% Load test data and labels
-
-data, labels = next(iter(dataloader))
+    chain_lists.vals['sample'][i] = chain_lists.vals['sample'][i][pred_iter_thres:]
 
 # %% Compute chain means
 
@@ -28,15 +25,13 @@ means = chain_lists.mean()
 
 # %% Make and save predictions
 
-for i in range(num_chains):
-    # Initialize model parameters
-    model.set_params(means[i, :].clone().detach())
+for k in range(num_chains):
+    test_pred_probs = np.empty([len(dataloader)])
 
-    # Compute logits
-    logits = model(data)
+    for i, (x, _) in enumerate(dataloader):
+        integral, _ = model.predictive_posterior([means[k, :]], x, torch.tensor([[1.]], dtype=dtype))
+        test_pred_probs[i] = integral.item()
 
-    # Make predictions
-    preds = logits.squeeze() > 0.5
+    test_preds = test_pred_probs > 0.5
 
-    # Save predictions
-    np.savetxt(sampler_output_run_paths[i].joinpath('preds_via_mean.txt'), preds, fmt='%d', delimiter=',')
+    np.savetxt(sampler_output_run_paths[k].joinpath('preds_via_mean.txt'), test_preds, fmt='%d')
