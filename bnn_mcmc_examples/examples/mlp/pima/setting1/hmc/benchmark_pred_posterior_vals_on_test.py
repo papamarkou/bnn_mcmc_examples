@@ -21,8 +21,6 @@ for i in range(num_chains):
 
 # %% Compute and save predictive posteriors
 
-pred_posterior = np.empty([num_chains, len(test_dataloader)])
-
 verbose_msg = 'Evaluating predictive posterior based on chain {:' \
     + str(len(str(num_chains))) \
     + '} out of ' \
@@ -34,11 +32,22 @@ verbose_msg = 'Evaluating predictive posterior based on chain {:' \
     + '...'
 
 for k in range(num_chains):
+    test_pred_probs = np.empty([len(test_dataloader), 2])
+    nums_dropped_samples = np.empty([len(test_dataloader)], dtype=np.int64)
+
     for i, (x, _) in enumerate(test_dataloader):
         print(verbose_msg.format(k+1, i+1))
 
-        pred_posterior[k, i] = model.predictive_posterior(
-            chain_lists.vals['sample'][k], x.squeeze(), torch.tensor([1.], dtype=dtype)
+        integral, num_dropped_samples = model.predictive_posterior(
+            chain_lists.vals['sample'][k], x, torch.tensor([[1.]], dtype=dtype)
         )
+        test_pred_probs[i, 1] = integral.item()
+        test_pred_probs[i, 0] = 1. - test_pred_probs[i, 1]
+        nums_dropped_samples[i] = num_dropped_samples
 
-    np.savetxt(sampler_output_run_paths[k].joinpath('pred_posterior_on_test.txt'), pred_posterior[k], delimiter=',')
+    np.savetxt(sampler_output_run_paths[k].joinpath('pred_posterior_on_test.csv'), test_pred_probs, delimiter=',')
+    np.savetxt(
+        sampler_output_run_paths[k].joinpath('pred_posterior_on_test_num_dropped_samples.txt'),
+        nums_dropped_samples,
+        fmt='%d'
+    )
