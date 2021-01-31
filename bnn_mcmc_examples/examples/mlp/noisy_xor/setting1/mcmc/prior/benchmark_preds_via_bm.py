@@ -3,7 +3,7 @@
 import numpy as np
 
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.constants import num_chains
-from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.prior.constants import sampler_output_run_paths
+from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.prior.constants import sampler_output_run_paths
 
 # %% Make and save predictions
 

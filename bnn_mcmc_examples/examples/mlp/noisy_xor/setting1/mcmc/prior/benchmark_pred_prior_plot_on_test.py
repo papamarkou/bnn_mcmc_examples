@@ -7,7 +7,7 @@ import pandas as pd
 
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.constants import num_chains
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.dataloaders import test_dataloader
-from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.prior.constants import sampler_output_run_paths
+from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.prior.constants import sampler_output_run_paths
 
 # %% Load test data and labels
 

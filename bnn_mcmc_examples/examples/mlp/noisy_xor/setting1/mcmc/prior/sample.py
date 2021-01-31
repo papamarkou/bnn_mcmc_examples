@@ -4,8 +4,8 @@ import numpy as np
 import torch
 
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.constants import num_chains, num_epochs
+from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.mcmc.prior.constants import sampler_output_run_paths
 from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.model import model
-from bnn_mcmc_examples.examples.mlp.noisy_xor.setting1.prior.constants import sampler_output_run_paths
 
 # %% Create output directories if they do not exist
 
