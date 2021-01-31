@@ -30,6 +30,7 @@ bnn_mcmc_examples/examples/mlp/noisy_xor/setting3/metropolis_hastings/__pycache_
 bnn_mcmc_examples/examples/mlp/penguins/__pycache__
 bnn_mcmc_examples/examples/mlp/penguins/hmc/__pycache__
 bnn_mcmc_examples/examples/mlp/penguins/metropolis_hastings/__pycache__
+bnn_mcmc_examples/examples/mlp/penguins/prior/__pycache__
 bnn_mcmc_examples/examples/mlp/pima/setting1/__pycache__
 bnn_mcmc_examples/examples/mlp/pima/setting1/hmc/__pycache__
 bnn_mcmc_examples/examples/mlp/pima/setting1/metropolis_hastings/__pycache__
