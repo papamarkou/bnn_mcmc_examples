@@ -6,9 +6,6 @@ library(Stat2Data)
 
 data(Hawks)
 
-# penguins.csv downloaded from
-# https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/inst/extdata/penguins.csv
-
 # Dimensions of dataframe
 
 print(c("Dimensions of dataframe:"))
