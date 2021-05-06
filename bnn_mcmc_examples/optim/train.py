@@ -23,6 +23,7 @@ def train(
     metric_vals = []
     metric_mean_vals = []
     num_batches = 0
+    num_monitor_batches = 0
     metric_mean_val = 0
 
     for epoch in range(num_epochs):
@@ -49,7 +50,8 @@ def train(
                         metric_vals.append(metric_val)
 
                     if save_metric_mean:
-                        metric_mean_val = (metric_mean_val * (num_batches - 1) + metric_val) / num_batches
+                        num_monitor_batches = num_monitor_batches + 1
+                        metric_mean_val = (metric_mean_val * (num_monitor_batches - 1) + metric_val) / num_monitor_batches
                         metric_mean_vals.append(metric_mean_val)
 
     return {
