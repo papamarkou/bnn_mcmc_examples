@@ -4,7 +4,7 @@ from bnn_mcmc_examples.examples.mlp.mnist.constants import num_chains, num_epoch
 from bnn_mcmc_examples.examples.mlp.mnist.hmc.constants import sampler_output_path
 from bnn_mcmc_examples.examples.mlp.mnist.hmc.sampler import sampler
 
-# %% Benchmark Metropolis-Hastings sampler
+# %% Benchmark HMC sampler
 
 sampler.benchmark(
     num_chains=num_chains,
