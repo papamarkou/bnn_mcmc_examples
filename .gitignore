@@ -14,6 +14,7 @@ bnn_mcmc_examples/examples/mlp/hawks/__pycache__
 bnn_mcmc_examples/examples/mlp/hawks/hmc/__pycache__
 bnn_mcmc_examples/examples/mlp/hawks/metropolis_hastings/__pycache__
 bnn_mcmc_examples/examples/mlp/hawks/prior/__pycache__
+bnn_mcmc_examples/examples/mlp/mnist/__pycache__
 bnn_mcmc_examples/examples/mlp/mnist/hmc/__pycache__
 bnn_mcmc_examples/examples/mlp/mnist/prior/__pycache__
 bnn_mcmc_examples/examples/mlp/noisy_xor/setting1/__pycache__

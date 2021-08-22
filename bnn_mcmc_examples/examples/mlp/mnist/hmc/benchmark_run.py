@@ -11,7 +11,7 @@ sampler.benchmark(
     num_epochs=num_epochs,
     num_burnin_epochs=num_burnin_epochs,
     path=sampler_output_path,
-    check_conditions=lambda chain, runtime : 0.35 <= chain.acceptance_rate(),
+    check_conditions=lambda chain, runtime : 0.15 <= chain.acceptance_rate(),
     verbose=verbose,
     verbose_step=verbose_step,
     print_acceptance=True,
