@@ -1,3 +1,4 @@
+bnn_mcmc_examples/data/MNIST
 bnn_mcmc_examples.egg-info
 bnn_mcmc_examples/__pycache__
 bnn_mcmc_examples/datasets/__pycache__
@@ -13,6 +14,8 @@ bnn_mcmc_examples/examples/mlp/hawks/__pycache__
 bnn_mcmc_examples/examples/mlp/hawks/hmc/__pycache__
 bnn_mcmc_examples/examples/mlp/hawks/metropolis_hastings/__pycache__
 bnn_mcmc_examples/examples/mlp/hawks/prior/__pycache__
+bnn_mcmc_examples/examples/mlp/mnist/hmc/__pycache__
+bnn_mcmc_examples/examples/mlp/mnist/prior/__pycache__
 bnn_mcmc_examples/examples/mlp/noisy_xor/setting1/__pycache__
 bnn_mcmc_examples/examples/mlp/noisy_xor/setting1/mcmc/__pycache__
 bnn_mcmc_examples/examples/mlp/noisy_xor/setting1/mcmc/hmc/__pycache__
